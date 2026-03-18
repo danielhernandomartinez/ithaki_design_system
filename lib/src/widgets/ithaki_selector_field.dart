@@ -64,10 +64,7 @@ class IthakiSelectorField extends StatelessWidget {
                 Expanded(
                   child: Text(
                     value ?? hint,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: selected ? IthakiTheme.textPrimary : IthakiTheme.textHint,
-                    ),
+                    style: selected ? IthakiTheme.labelField : IthakiTheme.hintStyle,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

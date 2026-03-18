@@ -53,10 +53,10 @@ class IthakiTextField extends StatelessWidget {
           onTap: onTap,
           onChanged: onChanged,
           inputFormatters: inputFormatters,
-          style: const TextStyle(fontSize: 14, color: IthakiTheme.textPrimary),
+          style: IthakiTheme.labelField,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: const TextStyle(color: IthakiTheme.textHint, fontSize: 14),
+            hintStyle: IthakiTheme.hintStyle,
             suffixIcon: suffixIcon,
             contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
             border: OutlineInputBorder(
