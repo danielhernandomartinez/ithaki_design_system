@@ -9,8 +9,8 @@ class _PhoneFormatter extends TextInputFormatter {
     final digits = next.text.replaceAll(RegExp(r'[^\d]'), '');
     final buf = StringBuffer();
     if (digits.isNotEmpty) buf.write('+');
-    for (int i = 0; i < digits.length && i < 12; i++) {
-      if (i == 2 || i == 5 || i == 8 || i == 10) buf.write(' ');
+    for (int i = 0; i < digits.length && i < 14; i++) {
+      if (i == 3) buf.write(' ');
       buf.write(digits[i]);
     }
     final result = buf.toString();
@@ -32,7 +32,7 @@ class IthakiPhoneField extends StatelessWidget {
     required this.controller,
     this.onChanged,
     this.label = 'Phone Number',
-    this.hint = '+XX XXX XXX XX XX',
+    this.hint = '+XXX XXXXXXXX XXX',
   });
 
   @override
@@ -54,6 +54,19 @@ class IthakiPhoneField extends StatelessWidget {
           onChanged: onChanged,
           keyboardType: TextInputType.phone,
           inputFormatters: [_PhoneFormatter()],
+          validator: (value) {
+            if (value == null || value.trim().isEmpty) {
+              return 'Please enter phone number';
+            }
+
+            final digits = value.replaceAll(RegExp(r'[^\d]'), '');
+            
+            if (digits.length < 9 || digits.length > 14) {
+              return 'Please enter correct phone number';
+            }
+
+            return null;
+          },
           style: const TextStyle(fontSize: 14, color: IthakiTheme.textPrimary),
           decoration: InputDecoration(
             hintText: hint,
