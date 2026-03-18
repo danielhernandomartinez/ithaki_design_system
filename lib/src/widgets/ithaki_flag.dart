@@ -20,7 +20,7 @@ class IthakiFlag extends StatelessWidget {
       'packages/ithaki_design_system/assets/flags/$code.svg',
       width: width,
       height: height,
-      fit: BoxFit.cover,
+      fit: BoxFit.contain,
       placeholderBuilder: (_) => SizedBox(width: width, height: height),
     );
   }
