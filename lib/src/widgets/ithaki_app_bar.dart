@@ -113,13 +113,20 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
       return [
         TextButton(
           onPressed: onLoginPressed,
-          child: const Text(
-            'Login',
-            style: TextStyle(
-              color: IthakiTheme.textPrimary,
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
-              decoration: TextDecoration.underline,
+          child: Container(
+            padding: const EdgeInsets.only(bottom: 3),
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: IthakiTheme.textPrimary, width: 1.2),
+              ),
+            ),
+            child: const Text(
+              'Login',
+              style: TextStyle(
+                color: IthakiTheme.textPrimary,
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+              ),
             ),
           ),
         ),

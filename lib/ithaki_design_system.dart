@@ -9,3 +9,7 @@ export 'src/widgets/ithaki_app_bar.dart';
 export 'src/widgets/ithaki_step_tabs.dart';
 export 'src/widgets/search_bottom_sheet.dart';
 export 'src/widgets/countdown_mixin.dart';
+export 'src/widgets/ithaki_chip_group.dart';
+export 'src/widgets/ithaki_checkbox.dart';
+export 'src/widgets/ithaki_selector_field.dart';
+export 'src/widgets/ithaki_option_card.dart';
