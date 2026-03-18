@@ -1,6 +1,6 @@
 name: ithaki_design_system
 description: Shared design system for Ithaki Flutter apps.
-version: 0.1.0
+version: 0.8.1
 publish_to: none
 
 environment:
