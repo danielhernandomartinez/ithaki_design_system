@@ -4,12 +4,13 @@ class IthakiTheme {
   static const primaryPurple = Color(0xFF905CFF);
   static const primaryPurpleLight = Color(0xFFC7ADFF);
   static const backgroundWhite = Color(0xFFFFFFFF);
-  static const textPrimary = Color(0xFF1A1A1A);
+  static const textPrimary = Color(0xFF1E1E1E);
   static const textSecondary = Color(0xFF6B6B6B);
   static const textHint = Color(0xFFAAAAAA);
   static const borderLight = Color(0xFFD0D0D0);
   static const cardBackground = Color(0xFFF2F2F2);
   static const successGreen = Color(0xFF4CAF50);
+  static const errorRed = Color(0xFFC9363E);
 
   static const headingLarge = TextStyle(
     fontSize: 24,

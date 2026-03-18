@@ -6,12 +6,12 @@ import 'ithaki_icon.dart';
 class _PhoneFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(TextEditingValue old, TextEditingValue next) {
-    final digits = next.text.replaceAll(RegExp(r'[^\d]'), '');
+    String cleanText = next.text.replaceAll(RegExp(r'[^\d\s]'), '');
+    cleanText = cleanText.replaceAll(RegExp(r'\s+'), ' ');
     final buf = StringBuffer();
-    if (digits.isNotEmpty) buf.write('+');
-    for (int i = 0; i < digits.length && i < 14; i++) {
-      if (i == 3) buf.write(' ');
-      buf.write(digits[i]);
+    if (cleanText.isNotEmpty) buf.write('+');
+    for (int i = 0; i < cleanText.length && buf.length < 16; i++) {
+      buf.write(cleanText[i]);
     }
     final result = buf.toString();
     return TextEditingValue(
@@ -32,7 +32,7 @@ class IthakiPhoneField extends StatelessWidget {
     required this.controller,
     this.onChanged,
     this.label = 'Phone Number',
-    this.hint = '+XXX XXXXXXXX XXX',
+    this.hint = '+XXX XXXXXXXX',
   });
 
   @override
@@ -59,34 +59,42 @@ class IthakiPhoneField extends StatelessWidget {
               return 'Please enter phone number';
             }
 
-            final digits = value.replaceAll(RegExp(r'[^\d]'), '');
+            final regex = RegExp(r'^\+\d{1,3} \d{8,11}$');
             
-            if (digits.length < 9 || digits.length > 14) {
-              return 'Please enter correct phone number';
+            if (!regex.hasMatch(value.trim())) {
+              return 'Please enter a valid format (e.g., +XX XXXXXXXX)';
             }
 
             return null;
           },
-          style: const TextStyle(fontSize: 14, color: IthakiTheme.textPrimary),
+          style: const TextStyle(fontSize: 16, color: IthakiTheme.textPrimary),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: const TextStyle(color: IthakiTheme.textHint, fontSize: 14),
+            hintStyle: const TextStyle(color: IthakiTheme.textHint, fontSize: 16),
             suffixIcon: const Padding(
               padding: EdgeInsets.all(12),
               child: IthakiIcon('phone', size: 18, color: IthakiTheme.textHint),
             ),
             contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: IthakiTheme.borderLight),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: IthakiTheme.borderLight),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: IthakiTheme.primaryPurple, width: 1.5),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: const BorderSide(color: IthakiTheme.errorRed),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: const BorderSide(color: IthakiTheme.errorRed, width: 1),
             ),
           ),
         ),
