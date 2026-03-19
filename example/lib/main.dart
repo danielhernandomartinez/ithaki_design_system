@@ -53,7 +53,7 @@ class CatalogHome extends StatelessWidget {
       body: ListView.separated(
         padding: const EdgeInsets.all(16),
         itemCount: pages.length,
-        separatorBuilder: (_, _) => const SizedBox(height: 4),
+        separatorBuilder: (_, __) => const SizedBox(height: 4),
         itemBuilder: (context, index) {
           final entry = pages.entries.elementAt(index);
           return ListTile(
@@ -111,12 +111,10 @@ class _AppBarPage extends StatelessWidget {
           child: IthakiAppBar(actionLabel: 'Login', onActionPressed: () {}),
         ),
         const SizedBox(height: 24),
-        const _Label('With back + action'),
+        const _Label('With action (Sign Up)'),
         SizedBox(
           height: 56,
           child: IthakiAppBar(
-            showBack: true,
-            onBack: () {},
             actionLabel: 'Sign Up',
             onActionPressed: () {},
           ),

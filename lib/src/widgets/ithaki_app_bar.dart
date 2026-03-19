@@ -6,17 +6,13 @@ import 'ithaki_icon.dart';
 class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? actionLabel;
   final VoidCallback? onActionPressed;
-  final bool showBack;
   final bool showMenuAndAvatar;
-  final VoidCallback? onBack;
 
   const IthakiAppBar({
     super.key,
     this.actionLabel,
     this.onActionPressed,
-    this.showBack = false,
     this.showMenuAndAvatar = false,
-    this.onBack,
   });
 
   @override
@@ -67,19 +63,6 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
       return IconButton(
         icon: const IthakiIcon('menu', size: 22),
         onPressed: () {},
-      );
-    }
-    if (showBack) {
-      return TextButton(
-        onPressed: onBack,
-        child: const Text(
-          'Back',
-          style: TextStyle(
-            decoration: TextDecoration.underline,
-            color: IthakiTheme.textPrimary,
-            fontSize: 14,
-          ),
-        ),
       );
     }
     return null;
