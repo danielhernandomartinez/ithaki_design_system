@@ -10,6 +10,7 @@ class IthakiOptionCard extends StatelessWidget {
   final Color? iconColor;
   final Color? backgroundColor;
   final double iconSize;
+  final Axis axis;
 
   const IthakiOptionCard({
     super.key,
@@ -20,6 +21,7 @@ class IthakiOptionCard extends StatelessWidget {
     this.iconColor,
     this.backgroundColor,
     this.iconSize = 20,
+    this.axis = Axis.horizontal,
   });
 
   @override
@@ -32,7 +34,7 @@ class IthakiOptionCard extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: axis == Axis.horizontal ? 20 : 14),
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xFFF0EAFA) : backgroundColor ?? const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(14),
@@ -41,20 +43,24 @@ class IthakiOptionCard extends StatelessWidget {
             width: 1.5,
           ),
         ),
-        child: Row(
-          children: [
-            IthakiIcon(icon, size: iconSize, color: resolvedIconColor),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                label,
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: textColor),
+        child: axis == Axis.vertical
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IthakiIcon(icon, size: iconSize, color: resolvedIconColor),
+                  const SizedBox(height: 8),
+                  Text(label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: textColor)),
+                ],
+              )
+            : Row(
+                children: [
+                  IthakiIcon(icon, size: iconSize, color: resolvedIconColor),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: textColor)),
+                  ),
+                ],
               ),
-            ),
-            if (isSelected)
-              const Icon(Icons.check_circle, size: 20, color: IthakiTheme.primaryPurple),
-          ],
-        ),
       ),
     );
   }
