@@ -43,11 +43,11 @@ class IthakiStepTabs extends StatelessWidget {
     if (isActive) {
       borderColor = IthakiTheme.primaryPurple;
       textColor = IthakiTheme.primaryPurple;
-      bgColor = const Color(0xFFF0EAFA);
+      bgColor = IthakiTheme.chipActive;
     } else if (isCompleted) {
       borderColor = IthakiTheme.primaryPurple;
       textColor = IthakiTheme.primaryPurple;
-      bgColor = Colors.white;
+      bgColor = IthakiTheme.backgroundViolet;
     } else {
       borderColor = IthakiTheme.borderLight;
       textColor = IthakiTheme.textSecondary;

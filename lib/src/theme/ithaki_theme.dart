@@ -6,6 +6,7 @@ class IthakiTheme {
   static const primaryPurpleLight = Color(0xFFC7ADFF);
   static const backgroundWhite = Color(0xFFFFFFFF);
   static const backgroundViolet = Color(0xFFF6F2FE);
+  static const chipActive = Color(0xFFE9DEFF);
   static const textPrimary = Color(0xFF1E1E1E);
   static const textSecondary = Color(0xFF6B6B6B);
   static const textHint = Color(0xFFAAAAAA);

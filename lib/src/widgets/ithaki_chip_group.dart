@@ -40,14 +40,14 @@ class IthakiChipGroup extends StatelessWidget {
             duration: const Duration(milliseconds: 200),
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: isSelected ? const Color(0xFFF0EAFA) : Colors.white,
+              color: isSelected ? IthakiTheme.backgroundViolet : IthakiTheme.softGray,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: isSelected
                     ? IthakiTheme.primaryPurple
                     : isDisabled
-                        ? IthakiTheme.borderLight.withValues(alpha: 0.4)
-                        : IthakiTheme.borderLight,
+                        ? IthakiTheme.lightGraphite.withValues(alpha: 0.4)
+                        : IthakiTheme.lightGraphite,
                 width: 1,
               ),
             ),
