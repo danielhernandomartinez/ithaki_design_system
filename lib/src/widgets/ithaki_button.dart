@@ -33,7 +33,7 @@ class IthakiButton extends StatelessWidget {
           onPressed: isEnabled ? onPressed : null,
           style: OutlinedButton.styleFrom(
             shape: shape,
-            side: const BorderSide(color: IthakiTheme.primaryPurple),
+            side: const BorderSide(color: Color(0xFFA5A5A5)),
             foregroundColor: IthakiTheme.textPrimary,
           ),
           child: Text(
