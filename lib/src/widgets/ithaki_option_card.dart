@@ -6,7 +6,6 @@ enum IthakiOptionCardType { sms, whatsapp }
 
 class IthakiOptionCard extends StatelessWidget {
   final IthakiOptionCardType type;
-  final String label;
   final bool isSelected;
   final VoidCallback onTap;
   final Color? iconColor;
@@ -15,7 +14,6 @@ class IthakiOptionCard extends StatelessWidget {
   const IthakiOptionCard({
     super.key,
     required this.type,
-    required this.label,
     required this.isSelected,
     required this.onTap,
     this.iconColor,
@@ -24,6 +22,9 @@ class IthakiOptionCard extends StatelessWidget {
 
   String get _icon => type == IthakiOptionCardType.whatsapp ? 'whatsapp' : 'envelope';
   double get _iconSize => type == IthakiOptionCardType.whatsapp ? 16.67 : 20;
+  String get _label => type == IthakiOptionCardType.whatsapp
+      ? 'Send secured code via WhatsApp'
+      : 'Send secured code via SMS';
 
   Color get _resolvedIconColor =>
       iconColor ?? (isSelected ? IthakiTheme.primaryPurple : IthakiTheme.textPrimary);
@@ -54,7 +55,7 @@ class IthakiOptionCard extends StatelessWidget {
             IthakiIcon(_icon, size: _iconSize, color: _resolvedIconColor),
             const SizedBox(height: 8),
             Text(
-              label,
+              _label,
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: _textColor),
             ),
           ],
