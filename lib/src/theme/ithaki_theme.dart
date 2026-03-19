@@ -5,11 +5,18 @@ class IthakiTheme {
   static const primaryPurple = Color(0xFF905CFF);
   static const primaryPurpleLight = Color(0xFFC7ADFF);
   static const backgroundWhite = Color(0xFFFFFFFF);
+  static const backgroundViolet = Color(0xFFF6F2FE);
   static const textPrimary = Color(0xFF1E1E1E);
   static const textSecondary = Color(0xFF6B6B6B);
   static const textHint = Color(0xFFAAAAAA);
+  static const lightGraphite = Color(0xFFA5A5A5);
+  static const lightGray = Color(0xFFD2D2D2);
+  static const softGray = Color(0xFFF2F2F2);
+  static const wireframeDark = Color(0xFF464D56);
+  static const softGraphite = Color(0xFF787878);
   static const borderLight = Color(0xFFD0D0D0);
   static const cardBackground = Color(0xFFF2F2F2);
+  static const graphite = Color(0x1A4B4B4B);
   static const successGreen = Color(0xFF4CAF50);
   static const errorRed = Color(0xFFC9363E);
 
@@ -31,12 +38,12 @@ class IthakiTheme {
   static const bodyRegular = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    color: textSecondary,
+    color: textPrimary,
   );
 
-  // 14px — field labels
+  // 16px — field labels
   static const labelField = TextStyle(
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.w600,
     color: textPrimary,
   );
@@ -55,7 +62,7 @@ class IthakiTheme {
   );
 
   static const labelMedium = TextStyle(
-    fontSize: 13,
+    fontSize: 16,
     fontWeight: FontWeight.w600,
     color: primaryPurple,
   );
