@@ -32,44 +32,54 @@ class IthakiChipGroup extends StatelessWidget {
       runSpacing: 8,
       children: options.map((option) {
         final isSelected = selected.contains(option);
-        final isDisabled = !isSelected && maxSelect != null && selected.length >= maxSelect!;
+        final isDisabled =
+            !isSelected && maxSelect != null && selected.length >= maxSelect!;
         return GestureDetector(
           onTap: isDisabled ? null : () => _toggle(option),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
               color: isSelected ? const Color(0xFFF0EAFA) : Colors.white,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: isSelected
                     ? IthakiTheme.primaryPurple
                     : isDisabled
-                        ? IthakiTheme.borderLight.withValues(alpha: 0.5)
+                        ? IthakiTheme.borderLight.withValues(alpha: 0.4)
                         : IthakiTheme.borderLight,
-                width: 1.5,
+                width: 1,
               ),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(width: 20),
-                Text(
-                  option,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: isSelected
-                        ? IthakiTheme.primaryPurple
-                        : isDisabled
-                            ? IthakiTheme.textHint
-                            : IthakiTheme.textPrimary,
+                SizedBox(
+                  width: 18,
+                  child: AnimatedOpacity(
+                    opacity: isSelected ? 1.0 : 0.0,
+                    duration: const Duration(milliseconds: 200),
+                    child: const Icon(Icons.check, size: 13, color: IthakiTheme.primaryPurple),
                   ),
                 ),
-                const SizedBox(width: 6),
-                Opacity(
-                  opacity: isSelected ? 1.0 : 0.0,
-                  child: const Icon(Icons.check, size: 14, color: IthakiTheme.primaryPurple),
+                TweenAnimationBuilder<double>(
+                  tween: Tween(begin: isSelected ? 0.0 : 9.0, end: isSelected ? 9.0 : 0.0),
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.easeInOut,
+                  builder: (_, offset, child) => Transform.translate(
+                    offset: Offset(offset, 0),
+                    child: child,
+                  ),
+                  child: Text(
+                    option,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: isDisabled ? IthakiTheme.textHint : IthakiTheme.textPrimary,
+                    ),
+                  ),
                 ),
+                const SizedBox(width: 18),
               ],
             ),
           ),
