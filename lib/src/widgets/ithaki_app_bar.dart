@@ -4,19 +4,19 @@ import '../theme/ithaki_theme.dart';
 import 'ithaki_icon.dart';
 
 class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final bool showLogin;
+  final String? actionLabel;
+  final VoidCallback? onActionPressed;
   final bool showBack;
   final bool showMenuAndAvatar;
   final VoidCallback? onBack;
-  final VoidCallback? onLoginPressed;
 
   const IthakiAppBar({
     super.key,
-    this.showLogin = true,
+    this.actionLabel,
+    this.onActionPressed,
     this.showBack = false,
     this.showMenuAndAvatar = false,
     this.onBack,
-    this.onLoginPressed,
   });
 
   @override
@@ -109,10 +109,10 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ];
     }
-    if (showLogin) {
+    if (actionLabel != null) {
       return [
         TextButton(
-          onPressed: onLoginPressed,
+          onPressed: onActionPressed,
           child: Container(
             padding: const EdgeInsets.only(bottom: 3),
             decoration: const BoxDecoration(
@@ -120,9 +120,9 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
                 bottom: BorderSide(color: IthakiTheme.textPrimary, width: 1.2),
               ),
             ),
-            child: const Text(
-              'Login',
-              style: TextStyle(
+            child: Text(
+              actionLabel!,
+              style: const TextStyle(
                 color: IthakiTheme.textPrimary,
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
