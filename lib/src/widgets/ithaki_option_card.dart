@@ -2,27 +2,28 @@ import 'package:flutter/material.dart';
 import '../theme/ithaki_theme.dart';
 import 'ithaki_icon.dart';
 
-enum IthakiOptionCardLayout { row, column }
+enum IthakiOptionCardType { sms, whatsapp }
 
 class IthakiOptionCard extends StatelessWidget {
-  final String icon;
+  final IthakiOptionCardType type;
   final String label;
   final bool isSelected;
   final VoidCallback onTap;
   final Color? iconColor;
   final Color? backgroundColor;
-  final IthakiOptionCardLayout layout;
 
   const IthakiOptionCard({
     super.key,
-    required this.icon,
+    required this.type,
     required this.label,
     required this.isSelected,
     required this.onTap,
     this.iconColor,
     this.backgroundColor,
-    this.layout = IthakiOptionCardLayout.row,
   });
+
+  String get _icon => type == IthakiOptionCardType.whatsapp ? 'whatsapp' : 'envelope';
+  double get _iconSize => type == IthakiOptionCardType.whatsapp ? 16.67 : 20;
 
   Color get _resolvedIconColor =>
       iconColor ?? (isSelected ? IthakiTheme.primaryPurple : IthakiTheme.textPrimary);
@@ -47,40 +48,18 @@ class IthakiOptionCard extends StatelessWidget {
               ? Border.all(color: IthakiTheme.primaryPurple, width: 1.5)
               : Border.all(color: Colors.transparent, width: 1.5),
         ),
-        child: layout == IthakiOptionCardLayout.column
-            ? _buildColumn()
-            : _buildRow(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IthakiIcon(_icon, size: _iconSize, color: _resolvedIconColor),
+            const SizedBox(height: 8),
+            Text(
+              label,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: _textColor),
+            ),
+          ],
+        ),
       ),
-    );
-  }
-
-  Widget _buildRow() {
-    return Row(
-      children: [
-        IthakiIcon(icon, size: 22, color: _resolvedIconColor),
-        const SizedBox(width: 14),
-        Text(
-          label,
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: _textColor),
-        ),
-        const Spacer(),
-        if (isSelected)
-          const Icon(Icons.check_circle, size: 20, color: IthakiTheme.primaryPurple),
-      ],
-    );
-  }
-
-  Widget _buildColumn() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        IthakiIcon(icon, size: 28, color: _resolvedIconColor),
-        const SizedBox(height: 8),
-        Text(
-          label,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: _textColor),
-        ),
-      ],
     );
   }
 }
