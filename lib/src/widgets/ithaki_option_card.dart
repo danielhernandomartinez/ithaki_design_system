@@ -3,8 +3,9 @@ import '../theme/ithaki_theme.dart';
 import 'ithaki_icon.dart';
 
 class IthakiOptionCard extends StatelessWidget {
-  final String icon;
+  final String? icon;
   final String label;
+  final String? subtitle;
   final bool isSelected;
   final VoidCallback onTap;
   final Color? iconColor;
@@ -14,8 +15,9 @@ class IthakiOptionCard extends StatelessWidget {
 
   const IthakiOptionCard({
     super.key,
-    required this.icon,
+    this.icon,
     required this.label,
+    this.subtitle,
     required this.isSelected,
     required this.onTap,
     this.iconColor,
@@ -47,17 +49,32 @@ class IthakiOptionCard extends StatelessWidget {
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  IthakiIcon(icon, size: iconSize, color: resolvedIconColor),
-                  const SizedBox(height: 8),
+                  if (icon != null) IthakiIcon(icon!, size: iconSize, color: resolvedIconColor),
+                  if (icon != null) const SizedBox(height: 8),
                   Text(label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: textColor)),
+                  if (subtitle != null) ...[
+                    const SizedBox(height: 4),
+                    Text(subtitle!, style: const TextStyle(fontSize: 13, color: IthakiTheme.textSecondary, height: 1.4)),
+                  ],
                 ],
               )
             : Row(
                 children: [
-                  IthakiIcon(icon, size: iconSize, color: resolvedIconColor),
-                  const SizedBox(width: 12),
+                  if (icon != null) ...[
+                    IthakiIcon(icon!, size: iconSize, color: resolvedIconColor),
+                    const SizedBox(width: 12),
+                  ],
                   Expanded(
-                    child: Text(label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: textColor)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: textColor)),
+                        if (subtitle != null) ...[
+                          const SizedBox(height: 2),
+                          Text(subtitle!, style: const TextStyle(fontSize: 13, color: IthakiTheme.textSecondary, height: 1.4)),
+                        ],
+                      ],
+                    ),
                   ),
                 ],
               ),
