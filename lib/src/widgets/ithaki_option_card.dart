@@ -36,11 +36,11 @@ class IthakiOptionCard extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: axis == Axis.horizontal ? 20 : 14),
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFFF0EAFA) : backgroundColor ?? const Color(0xFFF5F5F5),
-          borderRadius: BorderRadius.circular(14),
+          color: isSelected ? IthakiTheme.backgroundViolet : IthakiTheme.softGray,
+          borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: isSelected ? IthakiTheme.primaryPurple : Colors.transparent,
-            width: 1.5,
+            color: isSelected ? IthakiTheme.primaryPurple : IthakiTheme.lightGray,
+            width: 1,
           ),
         ),
         child: axis == Axis.vertical
