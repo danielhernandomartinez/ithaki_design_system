@@ -33,7 +33,7 @@ class IthakiDropdown<T> extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         DropdownButtonFormField<T>(
-          value: value,
+          initialValue: value,
           items: items,
           onChanged: onChanged,
           icon: const IthakiIcon('arrow-down', size: 20, color: IthakiTheme.textSecondary),

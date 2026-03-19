@@ -99,6 +99,7 @@ const _countries = <PhoneCountry>[
 class IthakiPhoneField extends StatefulWidget {
   final TextEditingController controller;
   final ValueChanged<String>? onChanged;
+  final ValueChanged<bool>? onValidationChanged;
   final String label;
   final PhoneCountry? initialCountry;
 
@@ -106,6 +107,7 @@ class IthakiPhoneField extends StatefulWidget {
     super.key,
     required this.controller,
     this.onChanged,
+    this.onValidationChanged,
     this.label = 'Phone Number',
     this.initialCountry,
   });
@@ -118,6 +120,7 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
   late PhoneCountry _country;
   bool _showError = false;
   bool _touched = false;
+  bool _lastValid = false;
 
   @override
   void initState() {
@@ -135,10 +138,14 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
   void _validate() {
     if (!_touched) return;
     final digits = widget.controller.text.replaceAll(RegExp(r'\D'), '');
+    final isValid = digits.length >= _country.minDigits && digits.length <= _country.maxDigits;
     setState(() {
-      _showError = digits.isNotEmpty &&
-          (digits.length < _country.minDigits || digits.length > _country.maxDigits);
+      _showError = digits.isNotEmpty && !isValid;
     });
+    if (isValid != _lastValid) {
+      _lastValid = isValid;
+      widget.onValidationChanged?.call(isValid);
+    }
   }
 
   void _openCountryPicker() {
@@ -161,6 +168,10 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
           _showError = false;
           _touched = false;
         });
+        if (_lastValid) {
+          _lastValid = false;
+          widget.onValidationChanged?.call(false);
+        }
       },
     );
   }
