@@ -153,7 +153,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                         child: Row(
                           children: [
                             if (isSelected) ...[
-                              const IthakiIcon('check', size: 18, color: IthakiTheme.primaryPurple),
+                              const IthakiIcon('check', size: 18, color: IthakiTheme.textPrimary),
                               const SizedBox(width: 8),
                               if (item.leadingWidget != null) item.leadingWidget!,
                             ] else if (item.leadingWidget != null)
