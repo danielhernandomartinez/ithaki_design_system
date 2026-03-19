@@ -46,7 +46,7 @@ class IthakiChipGroup extends StatelessWidget {
                     : isDisabled
                         ? IthakiTheme.borderLight.withValues(alpha: 0.5)
                         : IthakiTheme.borderLight,
-                width: isSelected ? 1.5 : 1,
+                width: 1.5,
               ),
             ),
             child: Row(
