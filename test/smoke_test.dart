@@ -4,7 +4,7 @@ import 'package:ithaki_design_system/ithaki_design_system.dart';
 
 void main() {
   test('IthakiTheme exports primary purple color', () {
-    expect(IthakiTheme.primaryPurple.value, equals(const Color(0xFF905CFF).value));
+    expect(IthakiTheme.primaryPurple.toARGB32(), equals(const Color(0xFF905CFF).toARGB32()));
   });
 
   testWidgets('IthakiButton renders with label', (tester) async {
