@@ -52,13 +52,7 @@ class IthakiChipGroup extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Opacity(
-                  opacity: isSelected ? 1.0 : 0.0,
-                  child: const Padding(
-                    padding: EdgeInsets.only(right: 6),
-                    child: Icon(Icons.check, size: 14, color: IthakiTheme.primaryPurple),
-                  ),
-                ),
+                const SizedBox(width: 20),
                 Text(
                   option,
                   style: TextStyle(
@@ -70,6 +64,11 @@ class IthakiChipGroup extends StatelessWidget {
                             ? IthakiTheme.textHint
                             : IthakiTheme.textPrimary,
                   ),
+                ),
+                const SizedBox(width: 6),
+                Opacity(
+                  opacity: isSelected ? 1.0 : 0.0,
+                  child: const Icon(Icons.check, size: 14, color: IthakiTheme.primaryPurple),
                 ),
               ],
             ),
