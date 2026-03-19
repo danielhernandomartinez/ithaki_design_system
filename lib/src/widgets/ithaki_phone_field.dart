@@ -235,7 +235,7 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
                   onChanged: (val) {
                     if (!_touched && val.isNotEmpty) setState(() => _touched = true);
                     _validate();
-                    widget.onChanged?.call('${_country.dialCode}$val');
+                    widget.onChanged?.call('${_country.dialCode} $val');
                   },
                   decoration: InputDecoration(
                     hintText: _country.format,
