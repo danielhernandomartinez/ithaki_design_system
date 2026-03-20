@@ -12,6 +12,15 @@ class IthakiSalaryInput extends StatelessWidget {
   final ValueChanged<String> onPaymentTermChanged;
   final bool preferNotToSpecify;
   final ValueChanged<bool> onPreferNotToSpecifyChanged;
+  final String expectedPaymentLabel;
+  final String fromLabel;
+  final String paymentTermLabel;
+  final String paymentTermPlaceholder;
+  final String currencySymbol;
+  final String preferNotToSpecifyLabel;
+  final String paymentTermPickerTitle;
+  final String paymentTermPickerSearchHint;
+  final String paymentTermPickerSelectLabel;
 
   const IthakiSalaryInput({
     super.key,
@@ -21,14 +30,25 @@ class IthakiSalaryInput extends StatelessWidget {
     required this.onPaymentTermChanged,
     required this.preferNotToSpecify,
     required this.onPreferNotToSpecifyChanged,
+    this.expectedPaymentLabel = 'Expected Payment',
+    this.fromLabel = 'From',
+    this.paymentTermLabel = 'Payment Term',
+    this.paymentTermPlaceholder = 'Monthly',
+    this.currencySymbol = '€',
+    this.preferNotToSpecifyLabel = 'Prefer not to specify',
+    this.paymentTermPickerTitle = 'Payment Term',
+    this.paymentTermPickerSearchHint = 'Search...',
+    this.paymentTermPickerSelectLabel = 'Select',
   });
 
   void _openPaymentTermPicker(BuildContext context) {
     SearchBottomSheet.show(
       context,
-      'Payment Term',
+      paymentTermPickerTitle,
       paymentTermOptions,
       (item) => onPaymentTermChanged(item.label),
+      searchHint: paymentTermPickerSearchHint,
+      selectLabel: paymentTermPickerSelectLabel,
     );
   }
 
@@ -37,9 +57,9 @@ class IthakiSalaryInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Expected Payment',
-          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: IthakiTheme.textPrimary),
+        Text(
+          expectedPaymentLabel,
+          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: IthakiTheme.textPrimary),
         ),
         const SizedBox(height: 10),
         Row(
@@ -50,7 +70,7 @@ class IthakiSalaryInput extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('From', style: TextStyle(fontSize: 12, color: IthakiTheme.textSecondary)),
+                  Text(fromLabel, style: const TextStyle(fontSize: 12, color: IthakiTheme.textSecondary)),
                   const SizedBox(height: 4),
                   Container(
                     decoration: BoxDecoration(
@@ -74,9 +94,9 @@ class IthakiSalaryInput extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12),
-                          child: Text('€', style: TextStyle(fontSize: 16, color: IthakiTheme.textSecondary)),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Text(currencySymbol, style: const TextStyle(fontSize: 16, color: IthakiTheme.textSecondary)),
                         ),
                       ],
                     ),
@@ -90,7 +110,7 @@ class IthakiSalaryInput extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Payment Term', style: TextStyle(fontSize: 12, color: IthakiTheme.textSecondary)),
+                  Text(paymentTermLabel, style: const TextStyle(fontSize: 12, color: IthakiTheme.textSecondary)),
                   const SizedBox(height: 4),
                   GestureDetector(
                     onTap: preferNotToSpecify ? null : () => _openPaymentTermPicker(context),
@@ -107,7 +127,7 @@ class IthakiSalaryInput extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              paymentTerm ?? 'Monthly',
+                              paymentTerm ?? paymentTermPlaceholder,
                               style: TextStyle(
                                 fontSize: 14,
                                 color: paymentTerm != null ? IthakiTheme.textPrimary : IthakiTheme.textHint,
@@ -132,9 +152,9 @@ class IthakiSalaryInput extends StatelessWidget {
             if (val) amountController.clear();
             onPreferNotToSpecifyChanged(val);
           },
-          child: const Text(
-            'Prefer not to specify',
-            style: TextStyle(fontSize: 13, color: IthakiTheme.textSecondary),
+          child: Text(
+            preferNotToSpecifyLabel,
+            style: const TextStyle(fontSize: 13, color: IthakiTheme.textSecondary),
           ),
         ),
       ],

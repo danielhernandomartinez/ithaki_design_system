@@ -102,6 +102,10 @@ class IthakiPhoneField extends StatefulWidget {
   final ValueChanged<bool>? onValidationChanged;
   final String label;
   final PhoneCountry? initialCountry;
+  final String selectCountryTitle;
+  final String validationErrorText;
+  final String countryPickerSearchHint;
+  final String countryPickerSelectLabel;
 
   const IthakiPhoneField({
     super.key,
@@ -110,6 +114,10 @@ class IthakiPhoneField extends StatefulWidget {
     this.onValidationChanged,
     this.label = 'Phone Number',
     this.initialCountry,
+    this.selectCountryTitle = 'Select Country',
+    this.validationErrorText = 'Please enter correct phone number',
+    this.countryPickerSearchHint = 'Search...',
+    this.countryPickerSelectLabel = 'Select',
   });
 
   @override
@@ -158,7 +166,7 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
 
     SearchBottomSheet.show(
       context,
-      'Select Country',
+      widget.selectCountryTitle,
       items,
       (item) {
         final selected = _countries.firstWhere((c) => c.code == item.id);
@@ -173,6 +181,8 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
           widget.onValidationChanged?.call(false);
         }
       },
+      searchHint: widget.countryPickerSearchHint,
+      selectLabel: widget.countryPickerSelectLabel,
     );
   }
 
@@ -250,9 +260,9 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
         ),
         if (_showError) ...[
           const SizedBox(height: 6),
-          const Text(
-            'Please enter correct phone number',
-            style: TextStyle(fontSize: 12, color: IthakiTheme.errorRed),
+          Text(
+            widget.validationErrorText,
+            style: const TextStyle(fontSize: 12, color: IthakiTheme.errorRed),
           ),
         ],
       ],

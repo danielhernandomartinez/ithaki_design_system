@@ -8,20 +8,26 @@ class SearchBottomSheet extends StatefulWidget {
   final String title;
   final List<SearchItem> items;
   final ValueChanged<SearchItem> onSelect;
+  final String searchHint;
+  final String selectLabel;
 
   const SearchBottomSheet({
     super.key,
     required this.title,
     required this.items,
     required this.onSelect,
+    this.searchHint = 'Search...',
+    this.selectLabel = 'Select',
   });
 
   static void show(
     BuildContext context,
     String title,
     List<SearchItem> items,
-    ValueChanged<SearchItem> onSelect,
-  ) {
+    ValueChanged<SearchItem> onSelect, {
+    String searchHint = 'Search...',
+    String selectLabel = 'Select',
+  }) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -33,6 +39,8 @@ class SearchBottomSheet extends StatefulWidget {
         title: title,
         items: items,
         onSelect: onSelect,
+        searchHint: searchHint,
+        selectLabel: selectLabel,
       ),
     );
   }
@@ -112,7 +120,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: 'Search...',
+                  hintText: widget.searchHint,
                   hintStyle: const TextStyle(color: IthakiTheme.textHint),
                   contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                   border: OutlineInputBorder(
@@ -180,7 +188,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
             Padding(
               padding: EdgeInsets.fromLTRB(16, 8, 16, MediaQuery.of(context).viewInsets.bottom + MediaQuery.of(context).padding.bottom + 16),
               child: IthakiButton(
-                'Select',
+                widget.selectLabel,
                 isEnabled: _selected != null,
                 onPressed: _selected != null
                     ? () {
