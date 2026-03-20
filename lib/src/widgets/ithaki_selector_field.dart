@@ -53,7 +53,7 @@ class IthakiSelectorField extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: selected ? IthakiTheme.primaryPurple : IthakiTheme.borderLight,
                 width: selected ? 1.5 : 1,

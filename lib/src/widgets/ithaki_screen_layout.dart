@@ -10,7 +10,7 @@ class IthakiScreenLayout extends StatelessWidget {
     super.key,
     this.appBar,
     required this.child,
-    this.horizontalPadding = 24,
+    this.horizontalPadding = 16,
     this.verticalPadding = 20,
   });
 
