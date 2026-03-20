@@ -37,11 +37,7 @@ class IthakiTextField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-            color: IthakiTheme.textPrimary,
-          ),
+          style: IthakiTheme.fieldLabel,
         ),
         const SizedBox(height: 6),
         TextFormField(

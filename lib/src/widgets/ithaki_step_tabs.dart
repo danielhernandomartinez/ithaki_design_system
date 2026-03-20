@@ -70,11 +70,7 @@ class IthakiStepTabs extends StatelessWidget {
           ],
           Text(
             label,
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: textColor,
-            ),
+            style: IthakiTheme.fieldLabel.copyWith(color: textColor),
           ),
         ],
       ),

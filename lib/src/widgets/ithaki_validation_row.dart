@@ -21,8 +21,7 @@ class IthakiValidationRow extends StatelessWidget {
           Expanded(
             child: Text(
               text,
-              style: TextStyle(
-                fontSize: 13,
+              style: IthakiTheme.captionRegular.copyWith(
                 color: valid ? IthakiTheme.textPrimary : IthakiTheme.textSecondary,
               ),
               overflow: TextOverflow.ellipsis,

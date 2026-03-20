@@ -72,10 +72,8 @@ class IthakiChipGroup extends StatelessWidget {
                   ),
                   child: Text(
                     option,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                      color: isDisabled ? IthakiTheme.textHint : IthakiTheme.textPrimary,
+                    style: IthakiTheme.chipLabel.copyWith(
+                      color: isDisabled ? IthakiTheme.softGraphite : null,
                     ),
                   ),
                 ),

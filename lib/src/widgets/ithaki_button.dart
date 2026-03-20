@@ -38,7 +38,7 @@ class IthakiButton extends StatelessWidget {
           ),
           child: Text(
             label,
-            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+            style: IthakiTheme.buttonLabel,
           ),
         ),
       );
@@ -61,7 +61,7 @@ class IthakiButton extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+          style: IthakiTheme.buttonLabel,
         ),
       ),
     );

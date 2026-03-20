@@ -51,10 +51,10 @@ class IthakiOptionCard extends StatelessWidget {
                 children: [
                   if (icon != null) IthakiIcon(icon!, size: iconSize, color: resolvedIconColor),
                   if (icon != null) const SizedBox(height: 8),
-                  Text(label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: textColor)),
+                  Text(label, style: IthakiTheme.bodySmallBold.copyWith(color: textColor)),
                   if (subtitle != null) ...[
                     const SizedBox(height: 4),
-                    Text(subtitle!, style: const TextStyle(fontSize: 13, color: IthakiTheme.textSecondary, height: 1.4)),
+                    Text(subtitle!, style: IthakiTheme.captionDescription),
                   ],
                 ],
               )
@@ -68,10 +68,10 @@ class IthakiOptionCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: textColor)),
+                        Text(label, style: IthakiTheme.bodySmallSemiBold.copyWith(color: textColor)),
                         if (subtitle != null) ...[
                           const SizedBox(height: 2),
-                          Text(subtitle!, style: const TextStyle(fontSize: 13, color: IthakiTheme.textSecondary, height: 1.4)),
+                          Text(subtitle!, style: IthakiTheme.captionDescription),
                         ],
                       ],
                     ),

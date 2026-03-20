@@ -43,9 +43,9 @@ class IthakiJobCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: IthakiTheme.textPrimary)),
+                Text(title, style: IthakiTheme.bodySmallSemiBold),
                 if (subtitle.isNotEmpty)
-                  Text(subtitle, style: const TextStyle(fontSize: 12, color: IthakiTheme.textSecondary)),
+                  Text(subtitle, style: IthakiTheme.captionRegular),
               ],
             ),
           ),

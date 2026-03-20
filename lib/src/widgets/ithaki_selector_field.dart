@@ -29,20 +29,12 @@ class IthakiSelectorField extends StatelessWidget {
           children: [
             Text(
               label,
-              style: const TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-                color: IthakiTheme.textPrimary,
-              ),
+              style: IthakiTheme.fieldLabel,
             ),
             if (optional)
               const Text(
                 ' (optional)',
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400,
-                  color: IthakiTheme.textSecondary,
-                ),
+                style: IthakiTheme.captionRegular,
               ),
           ],
         ),
@@ -71,7 +63,7 @@ class IthakiSelectorField extends StatelessWidget {
                 Icon(
                   Icons.keyboard_arrow_down,
                   size: 20,
-                  color: enabled ? IthakiTheme.textSecondary : IthakiTheme.textHint,
+                  color: enabled ? IthakiTheme.textSecondary : IthakiTheme.softGraphite,
                 ),
               ],
             ),

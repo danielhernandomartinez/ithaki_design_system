@@ -25,11 +25,7 @@ class IthakiDropdown<T> extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-            color: IthakiTheme.textPrimary,
-          ),
+          style: IthakiTheme.fieldLabel,
         ),
         const SizedBox(height: 6),
         DropdownButtonFormField<T>(
@@ -39,9 +35,9 @@ class IthakiDropdown<T> extends StatelessWidget {
           icon: const IthakiIcon('arrow-down', size: 20, color: IthakiTheme.textSecondary),
           hint: Text(
             hint,
-            style: const TextStyle(color: IthakiTheme.textHint, fontSize: 14),
+            style: IthakiTheme.hintSmall,
           ),
-          style: const TextStyle(fontSize: 14, color: IthakiTheme.textPrimary),
+          style: IthakiTheme.bodySmall,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
             border: OutlineInputBorder(

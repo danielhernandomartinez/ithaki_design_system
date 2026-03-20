@@ -121,7 +121,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                 controller: _searchController,
                 decoration: InputDecoration(
                   hintText: widget.searchHint,
-                  hintStyle: const TextStyle(color: IthakiTheme.textHint),
+                  hintStyle: IthakiTheme.hintStyle,
                   contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(14),
@@ -170,11 +170,11 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                               const SizedBox(width: 18),
                             const SizedBox(width: 12),
                             Expanded(
-                              child: Text(item.label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis),
+                              child: Text(item.label, style: IthakiTheme.bodySmallMedium, overflow: TextOverflow.ellipsis),
                             ),
                             if (item.subtitle.isNotEmpty) ...[
                               const SizedBox(width: 8),
-                              Text(item.subtitle, style: const TextStyle(fontSize: 12, color: IthakiTheme.textSecondary), overflow: TextOverflow.ellipsis),
+                              Text(item.subtitle, style: IthakiTheme.captionRegular, overflow: TextOverflow.ellipsis),
                             ],
                           ],
                         ),

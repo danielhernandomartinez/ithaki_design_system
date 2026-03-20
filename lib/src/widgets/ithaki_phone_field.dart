@@ -223,11 +223,7 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
                       const SizedBox(width: 6),
                       Text(
                         _country.dialCode,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: IthakiTheme.textPrimary,
-                        ),
+                        style: IthakiTheme.bodySmallMedium,
                       ),
                       const SizedBox(width: 4),
                       const Icon(Icons.keyboard_arrow_down, size: 16, color: IthakiTheme.textSecondary),
@@ -241,7 +237,7 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
                   controller: widget.controller,
                   keyboardType: TextInputType.phone,
                   inputFormatters: [_PatternFormatter(_country.format)],
-                  style: const TextStyle(fontSize: 14, color: IthakiTheme.textPrimary),
+                  style: IthakiTheme.bodySmall,
                   onChanged: (val) {
                     if (!_touched && val.isNotEmpty) setState(() => _touched = true);
                     _validate();
@@ -249,7 +245,7 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
                   },
                   decoration: InputDecoration(
                     hintText: _country.format,
-                    hintStyle: const TextStyle(color: IthakiTheme.textHint, fontSize: 14),
+                    hintStyle: IthakiTheme.hintSmall,
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
                   ),
@@ -262,7 +258,7 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
           const SizedBox(height: 6),
           Text(
             widget.validationErrorText,
-            style: const TextStyle(fontSize: 12, color: IthakiTheme.errorRed),
+            style: IthakiTheme.errorCaption,
           ),
         ],
       ],

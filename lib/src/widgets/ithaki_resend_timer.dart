@@ -49,9 +49,7 @@ class IthakiResendTimer extends StatelessWidget {
               ],
               Text(
                 _timerLabel,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                style: IthakiTheme.bodySmallMedium.copyWith(
                   color: canResend ? IthakiTheme.primaryPurple : IthakiTheme.textSecondary,
                   decoration: canResend ? TextDecoration.underline : null,
                   decorationColor: IthakiTheme.primaryPurple,
@@ -67,16 +65,15 @@ class IthakiResendTimer extends StatelessWidget {
       onTap: canResend ? onResend : null,
       child: RichText(
         text: TextSpan(
-          style: const TextStyle(fontSize: 14, color: IthakiTheme.textSecondary),
+          style: IthakiTheme.bodySmall.copyWith(color: IthakiTheme.textSecondary),
           children: canResend
               ? [
                   TextSpan(
                     text: label,
-                    style: const TextStyle(
+                    style: IthakiTheme.bodySmallSemiBold.copyWith(
                       color: IthakiTheme.primaryPurple,
                       decoration: TextDecoration.underline,
                       decorationColor: IthakiTheme.primaryPurple,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ]
@@ -84,10 +81,7 @@ class IthakiResendTimer extends StatelessWidget {
                   TextSpan(text: '$label in '),
                   TextSpan(
                     text: '0:${secondsLeft.toString().padLeft(2, '0')}',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: IthakiTheme.textPrimary,
-                    ),
+                    style: IthakiTheme.bodySmallBold,
                   ),
                 ],
         ),

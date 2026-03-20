@@ -25,7 +25,7 @@ class IthakiChipSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: IthakiTheme.textPrimary)),
+        Text(title, style: IthakiTheme.fieldLabel),
         const SizedBox(height: 4),
         Text(description, style: IthakiTheme.bodyRegular),
         const SizedBox(height: 10),

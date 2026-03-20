@@ -52,7 +52,7 @@ class _IthakiPasswordFieldState extends State<IthakiPasswordField> {
         icon: IthakiIcon(
           _obscure ? 'eye' : 'eye-closed',
           size: 20,
-          color: hasText ? Colors.black : IthakiTheme.textHint,
+          color: hasText ? Colors.black : IthakiTheme.softGraphite,
         ),
         onPressed: () => setState(() => _obscure = !_obscure),
       ),

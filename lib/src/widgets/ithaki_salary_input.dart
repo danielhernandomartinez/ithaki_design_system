@@ -59,7 +59,7 @@ class IthakiSalaryInput extends StatelessWidget {
       children: [
         Text(
           expectedPaymentLabel,
-          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: IthakiTheme.textPrimary),
+          style: IthakiTheme.fieldLabel,
         ),
         const SizedBox(height: 10),
         Row(
@@ -70,7 +70,7 @@ class IthakiSalaryInput extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(fromLabel, style: const TextStyle(fontSize: 12, color: IthakiTheme.textSecondary)),
+                  Text(fromLabel, style: IthakiTheme.captionRegular),
                   const SizedBox(height: 4),
                   Container(
                     decoration: BoxDecoration(
@@ -85,10 +85,10 @@ class IthakiSalaryInput extends StatelessWidget {
                             enabled: !preferNotToSpecify,
                             keyboardType: TextInputType.number,
                             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                            style: const TextStyle(fontSize: 14, color: IthakiTheme.textPrimary),
+                            style: IthakiTheme.bodySmall,
                             decoration: const InputDecoration(
                               hintText: '0',
-                              hintStyle: TextStyle(color: IthakiTheme.textHint),
+                              hintStyle: IthakiTheme.hintStyle,
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                             ),
@@ -96,7 +96,7 @@ class IthakiSalaryInput extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: Text(currencySymbol, style: const TextStyle(fontSize: 16, color: IthakiTheme.textSecondary)),
+                          child: Text(currencySymbol, style: IthakiTheme.bodySecondary),
                         ),
                       ],
                     ),
@@ -110,7 +110,7 @@ class IthakiSalaryInput extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(paymentTermLabel, style: const TextStyle(fontSize: 12, color: IthakiTheme.textSecondary)),
+                  Text(paymentTermLabel, style: IthakiTheme.captionRegular),
                   const SizedBox(height: 4),
                   GestureDetector(
                     onTap: preferNotToSpecify ? null : () => _openPaymentTermPicker(context),
@@ -128,9 +128,8 @@ class IthakiSalaryInput extends StatelessWidget {
                           Expanded(
                             child: Text(
                               paymentTerm ?? paymentTermPlaceholder,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: paymentTerm != null ? IthakiTheme.textPrimary : IthakiTheme.textHint,
+                              style: IthakiTheme.bodySmall.copyWith(
+                                color: paymentTerm != null ? IthakiTheme.textPrimary : IthakiTheme.softGraphite,
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -154,7 +153,7 @@ class IthakiSalaryInput extends StatelessWidget {
           },
           child: Text(
             preferNotToSpecifyLabel,
-            style: const TextStyle(fontSize: 13, color: IthakiTheme.textSecondary),
+            style: IthakiTheme.captionRegular,
           ),
         ),
       ],

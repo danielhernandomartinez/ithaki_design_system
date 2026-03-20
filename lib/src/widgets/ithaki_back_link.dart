@@ -13,12 +13,7 @@ class IthakiBackLink extends StatelessWidget {
       onTap: onTap,
       child: Text(
         label,
-        style: const TextStyle(
-          fontSize: 14,
-          color: IthakiTheme.textPrimary,
-          decoration: TextDecoration.underline,
-          decorationColor: IthakiTheme.textPrimary,
-        ),
+        style: IthakiTheme.linkSmall,
       ),
     );
   }

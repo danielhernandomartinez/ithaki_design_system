@@ -24,12 +24,11 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final topPadding = MediaQuery.of(context).padding.top;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
       child: Container(
         color: Colors.transparent,
-        padding: EdgeInsets.only(top: topPadding + 8, left: 16, right: 16, bottom: 8),
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 4, left: 16, right: 16, bottom: 4),
         child: Container(
           height: 52,
           decoration: BoxDecoration(
@@ -37,9 +36,9 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.08),
-                blurRadius: 12,
-                offset: const Offset(0, 2),
+                color: Colors.black.withValues(alpha: 0.06),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
             ],
           ),
@@ -51,7 +50,7 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: IthakiTheme.appBarTitle,
                 ),
               ),
               ..._buildActions(),
@@ -86,11 +85,7 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
             backgroundColor: IthakiTheme.successGreen,
             child: Text(
               avatarInitials,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 11,
-                fontWeight: FontWeight.bold,
-              ),
+              style: IthakiTheme.badgeLabel,
             ),
           ),
         ),
@@ -109,11 +104,7 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             child: Text(
               actionLabel!,
-              style: const TextStyle(
-                color: IthakiTheme.textPrimary,
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-              ),
+              style: IthakiTheme.bodySmall,
             ),
           ),
         ),
