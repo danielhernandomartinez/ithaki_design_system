@@ -27,7 +27,22 @@ class _IthakiPasswordFieldState extends State<IthakiPasswordField> {
   bool _obscure = true;
 
   @override
+  void initState() {
+    super.initState();
+    widget.controller.addListener(_onTextChanged);
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_onTextChanged);
+    super.dispose();
+  }
+
+  void _onTextChanged() => setState(() {});
+
+  @override
   Widget build(BuildContext context) {
+    final hasText = widget.controller.text.isNotEmpty;
     return IthakiTextField(
       label: widget.label,
       hint: widget.hint,
@@ -38,7 +53,7 @@ class _IthakiPasswordFieldState extends State<IthakiPasswordField> {
         icon: IthakiIcon(
           _obscure ? 'eye' : 'eye-closed',
           size: 20,
-          color: Colors.black,
+          color: hasText ? Colors.black : IthakiTheme.textHint,
         ),
         onPressed: () => setState(() => _obscure = !_obscure),
       ),
