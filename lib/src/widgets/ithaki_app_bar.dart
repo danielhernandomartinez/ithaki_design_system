@@ -7,12 +7,16 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? actionLabel;
   final VoidCallback? onActionPressed;
   final bool showMenuAndAvatar;
+  final String title;
+  final String avatarInitials;
 
   const IthakiAppBar({
     super.key,
     this.actionLabel,
     this.onActionPressed,
     this.showMenuAndAvatar = false,
+    this.title = 'Ithaki',
+    this.avatarInitials = 'AA',
   });
 
   @override
@@ -44,10 +48,10 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               _buildLeading() ?? const SizedBox(width: 12),
-              const Expanded(
+              Expanded(
                 child: Text(
-                  'Ithaki',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  title,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
               ),
               ..._buildActions(),
@@ -75,14 +79,14 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: const IthakiIcon('notifications-bell', size: 22),
           onPressed: () {},
         ),
-        const Padding(
-          padding: EdgeInsets.only(right: 8),
+        Padding(
+          padding: const EdgeInsets.only(right: 8),
           child: CircleAvatar(
             radius: 16,
             backgroundColor: IthakiTheme.successGreen,
             child: Text(
-              'AA',
-              style: TextStyle(
+              avatarInitials,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 11,
                 fontWeight: FontWeight.bold,
