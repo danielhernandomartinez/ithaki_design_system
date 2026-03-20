@@ -16,15 +16,20 @@ class IthakiScreenLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appBarHeight = appBar?.preferredSize.height ?? 0;
+    final topPadding = MediaQuery.of(context).padding.top;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: appBar,
       body: SafeArea(
         top: false,
         bottom: true,
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(
-            horizontal: horizontalPadding,
-            vertical: verticalPadding,
+          padding: EdgeInsets.only(
+            left: horizontalPadding,
+            right: horizontalPadding,
+            top: appBar != null ? appBarHeight + topPadding + verticalPadding : verticalPadding,
+            bottom: verticalPadding,
           ),
           child: child,
         ),
