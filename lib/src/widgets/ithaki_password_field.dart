@@ -36,9 +36,9 @@ class _IthakiPasswordFieldState extends State<IthakiPasswordField> {
       obscureText: _obscure,
       suffixIcon: IconButton(
         icon: IthakiIcon(
-          _obscure ? 'eye-closed' : 'eye',
+          _obscure ? 'eye' : 'eye-closed',
           size: 20,
-          color: IthakiTheme.textHint,
+          color: Colors.black,
         ),
         onPressed: () => setState(() => _obscure = !_obscure),
       ),
