@@ -9,8 +9,8 @@ class IthakiFlag extends StatelessWidget {
   const IthakiFlag(
     this.countryCode, {
     super.key,
-    this.width = 28,
-    this.height = 20,
+    this.width = 20,
+    this.height = 16,
   });
 
   @override
