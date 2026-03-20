@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../theme/ithaki_theme.dart';
 import 'ithaki_icon.dart';
 import 'ithaki_text_field.dart';
 
