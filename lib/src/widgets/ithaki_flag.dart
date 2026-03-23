@@ -10,18 +10,24 @@ class IthakiFlag extends StatelessWidget {
     this.countryCode, {
     super.key,
     this.width = 20,
-    this.height = 16,
+    this.height = 15,
   });
 
   @override
   Widget build(BuildContext context) {
     final code = countryCode.toLowerCase();
-    return SvgPicture.asset(
-      'packages/ithaki_design_system/assets/flags/$code.svg',
-      width: width,
-      height: height,
-      fit: BoxFit.contain,
-      placeholderBuilder: (_) => SizedBox(width: width, height: height),
+    return ClipRRect(
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: SvgPicture.asset(
+          'packages/ithaki_design_system/assets/flags/$code.svg',
+          width: width,
+          height: height,
+          fit: BoxFit.cover,
+          placeholderBuilder: (_) => SizedBox(width: width, height: height),
+        ),
+      ),
     );
   }
 }
