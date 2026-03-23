@@ -7,16 +7,24 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? actionLabel;
   final VoidCallback? onActionPressed;
   final bool showMenuAndAvatar;
+  final bool menuOpen;
+  final bool profileOpen;
   final String title;
   final String avatarInitials;
+  final VoidCallback? onMenuPressed;
+  final VoidCallback? onAvatarPressed;
 
   const IthakiAppBar({
     super.key,
     this.actionLabel,
     this.onActionPressed,
     this.showMenuAndAvatar = false,
+    this.menuOpen = false,
+    this.profileOpen = false,
     this.title = 'Ithaki',
     this.avatarInitials = 'AA',
+    this.onMenuPressed,
+    this.onAvatarPressed,
   });
 
   @override
@@ -43,17 +51,21 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
             ],
           ),
           padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Stack(
+            alignment: Alignment.center,
             children: [
-              _buildLeading() ?? const SizedBox(width: 12),
-              Expanded(
-                child: Text(
-                  title,
-                  style: IthakiTheme.appBarTitle,
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _buildLeading(context) ?? const SizedBox(width: 12),
+                  const Spacer(),
+                  ..._buildActions(),
+                ],
               ),
-              ..._buildActions(),
+              Text(
+                title,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
             ],
           ),
         ),
@@ -61,11 +73,29 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget? _buildLeading() {
+  Widget? _buildLeading(BuildContext context) {
     if (showMenuAndAvatar) {
-      return IconButton(
-        icon: const IthakiIcon('menu', size: 22),
-        onPressed: () {},
+      return GestureDetector(
+        onTap: onMenuPressed,
+        child: Container(
+          width: 40,
+          height: 40,
+          margin: const EdgeInsets.only(left: 4),
+          decoration: menuOpen
+              ? BoxDecoration(
+                  color: const Color(0xFFF6F2FE),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: const Color(0xFF905CFF), width: 1.5),
+                )
+              : null,
+          child: Center(
+            child: IthakiIcon(
+              'menu',
+              size: 22,
+              color: menuOpen ? const Color(0xFF905CFF) : IthakiTheme.textPrimary,
+            ),
+          ),
+        ),
       );
     }
     return null;
@@ -78,14 +108,27 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: const IthakiIcon('notifications-bell', size: 22),
           onPressed: () {},
         ),
-        Padding(
-          padding: const EdgeInsets.only(right: 8),
-          child: CircleAvatar(
-            radius: 16,
-            backgroundColor: IthakiTheme.successGreen,
-            child: Text(
-              avatarInitials,
-              style: IthakiTheme.badgeLabel,
+        GestureDetector(
+          onTap: onAvatarPressed,
+          child: Container(
+            margin: const EdgeInsets.only(right: 8),
+            decoration: profileOpen
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    border: Border.all(color: const Color(0xFF905CFF), width: 2),
+                  )
+                : null,
+            child: CircleAvatar(
+              radius: 16,
+              backgroundColor: IthakiTheme.successGreen,
+              child: Text(
+                avatarInitials,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ),

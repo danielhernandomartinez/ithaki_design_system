@@ -39,7 +39,7 @@ class IthakiOptionCard extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: axis == Axis.horizontal ? 20 : 14),
         decoration: BoxDecoration(
           color: isSelected ? IthakiTheme.backgroundViolet : IthakiTheme.softGray,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isSelected ? IthakiTheme.primaryPurple : IthakiTheme.lightGray,
             width: 1,

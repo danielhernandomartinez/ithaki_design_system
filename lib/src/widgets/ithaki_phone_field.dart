@@ -198,7 +198,7 @@ class _IthakiPhoneFieldState extends State<IthakiPhoneField> {
         const SizedBox(height: 6),
         Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: _showError ? IthakiTheme.errorRed : IthakiTheme.borderLight,
               width: _showError ? 1.5 : 1,

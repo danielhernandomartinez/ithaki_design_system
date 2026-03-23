@@ -74,7 +74,7 @@ class IthakiSalaryInput extends StatelessWidget {
                   const SizedBox(height: 4),
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(16),
                       border: Border.all(color: IthakiTheme.borderLight),
                     ),
                     child: Row(
@@ -117,7 +117,7 @@ class IthakiSalaryInput extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(16),
                         border: Border.all(
                           color: paymentTerm != null ? IthakiTheme.primaryPurple : IthakiTheme.borderLight,
                           width: paymentTerm != null ? 1.5 : 1,
