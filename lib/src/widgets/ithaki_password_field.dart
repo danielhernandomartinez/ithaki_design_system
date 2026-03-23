@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../theme/ithaki_theme.dart';
 import 'ithaki_icon.dart';
 import 'ithaki_text_field.dart';
-import '../theme/ithaki_theme.dart';
 class IthakiPasswordField extends StatefulWidget {
   final String label;
   final String hint;
