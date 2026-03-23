@@ -20,7 +20,6 @@ class IthakiMatchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mainColor = gradientColors.first;
 
     return Container(
       height: 36,
