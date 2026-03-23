@@ -55,23 +55,30 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
             ],
           ),
           padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _buildLeading(context) ?? const SizedBox(width: 12),
-                  const Spacer(),
-                  ..._buildActions(),
-                ],
-              ),
-              Text(
-                title,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-            ],
-          ),
+          child: showMenuAndAvatar
+              ? Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        _buildLeading(context)!,
+                        const Spacer(),
+                        ..._buildActions(),
+                      ],
+                    ),
+                    Text(title, style: IthakiTheme.appBarTitle),
+                  ],
+                )
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(width: 16),
+                    Text(title, style: IthakiTheme.appBarTitle),
+                    const Spacer(),
+                    ..._buildActions(),
+                  ],
+                ),
         ),
       ),
     );
