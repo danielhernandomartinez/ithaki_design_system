@@ -13,6 +13,8 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String avatarInitials;
   final VoidCallback? onMenuPressed;
   final VoidCallback? onAvatarPressed;
+  final GlobalKey? menuKey;
+  final GlobalKey? avatarKey;
 
   const IthakiAppBar({
     super.key,
@@ -25,6 +27,8 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.avatarInitials = 'AA',
     this.onMenuPressed,
     this.onAvatarPressed,
+    this.menuKey,
+    this.avatarKey,
   });
 
   @override
@@ -76,6 +80,7 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget? _buildLeading(BuildContext context) {
     if (showMenuAndAvatar) {
       return GestureDetector(
+        key: menuKey,
         onTap: onMenuPressed,
         child: Container(
           width: 40,
@@ -109,6 +114,7 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {},
         ),
         GestureDetector(
+          key: avatarKey,
           onTap: onAvatarPressed,
           child: Container(
             margin: const EdgeInsets.only(right: 8),
