@@ -60,15 +60,15 @@ class IthakiTextField extends StatelessWidget {
             suffixIcon: suffixIcon,
             contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: IthakiTheme.borderLight),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: IthakiTheme.borderLight),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: IthakiTheme.primaryPurple, width: 1),
             ),
           ),

@@ -16,12 +16,14 @@ class IthakiFlag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final code = countryCode.toLowerCase();
-    return SvgPicture.asset(
-      'packages/ithaki_design_system/assets/flags/$code.svg',
-      width: width,
-      height: height,
-      fit: BoxFit.contain,
-      placeholderBuilder: (_) => SizedBox(width: width, height: height),
+    return ClipOval(
+      child: SvgPicture.asset(
+        'packages/ithaki_design_system/assets/flags/$code.svg',
+        width: width,
+        height: height,
+        fit: BoxFit.cover,
+        placeholderBuilder: (_) => SizedBox(width: width, height: height),
+      ),
     );
   }
 }

@@ -19,7 +19,13 @@ class IthakiTheme {
   static const cardBackground = Color(0xFFF2F2F2);
   static const graphite = Color(0x1A4B4B4B);
   static const successGreen = Color(0xFF4CAF50);
+  static const matchGreen = Color(0xFF75E767);
+  static const badgeLime = Color(0xFFC8FF5D);
+  static const accentPurpleLight = Color(0xFFAD86FF);
   static const errorRed = Color(0xFFC9363E);
+  static const placeholderBg = Color(0xFFE0E0E0);
+  static const placeholderIcon = Color(0xFFBDBDBD);
+  static const matchBarBg = Color(0xFFEAFBE8);
 
   // 24px — main titles
   static const headingLarge = TextStyle(
