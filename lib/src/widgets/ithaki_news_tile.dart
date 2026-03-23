@@ -49,7 +49,7 @@ class IthakiNewsTile extends StatelessWidget {
                 date,
                 style: const TextStyle(
                   fontSize: 12,
-                  color: IthakiTheme.textHint,
+                  color: IthakiTheme.textSecondary,
                 ),
               ),
             ],
