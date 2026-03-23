@@ -118,7 +118,9 @@ class IthakiCourseCard extends StatelessWidget {
                     const SizedBox(height: 12),
                     const Divider(height: 1, color: IthakiTheme.borderLight),
                     const SizedBox(height: 12),
-                    Row(
+                    Wrap(
+                      spacing: 16,
+                      runSpacing: 8,
                       children: [
                         if (format != null)
                           IthakiInfoTag(
@@ -126,17 +128,12 @@ class IthakiCourseCard extends StatelessWidget {
                                 size: tagIconSize, color: tagIconColor),
                             label: format!,
                           ),
-                        if (format != null &&
-                            (duration != null || level != null))
-                          const SizedBox(width: 16),
                         if (duration != null)
                           IthakiInfoTag(
                             icon: IthakiIcon('clock',
                                 size: tagIconSize, color: tagIconColor),
                             label: duration!,
                           ),
-                        if (duration != null && level != null)
-                          const SizedBox(width: 16),
                         if (level != null)
                           IthakiInfoTag(
                             icon: IthakiIcon('level',
