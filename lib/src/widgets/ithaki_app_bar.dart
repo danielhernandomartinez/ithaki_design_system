@@ -15,6 +15,7 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onAvatarPressed;
   final GlobalKey? menuKey;
   final GlobalKey? avatarKey;
+  final bool showBackButton;
 
   const IthakiAppBar({
     super.key,
@@ -29,6 +30,7 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onAvatarPressed,
     this.menuKey,
     this.avatarKey,
+    this.showBackButton = false,
   });
 
   @override
@@ -78,6 +80,20 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget? _buildLeading(BuildContext context) {
+    if (showBackButton) {
+      return GestureDetector(
+        onTap: onMenuPressed ?? () => Navigator.of(context).pop(),
+        child: Container(
+          width: 40,
+          height: 40,
+          margin: const EdgeInsets.only(left: 4),
+          child: const Center(
+            child: IthakiIcon('back-chevron', size: 22,
+                color: IthakiTheme.textPrimary),
+          ),
+        ),
+      );
+    }
     if (showMenuAndAvatar) {
       return GestureDetector(
         key: menuKey,
