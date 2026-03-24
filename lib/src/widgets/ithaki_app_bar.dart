@@ -75,7 +75,10 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
               : Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(width: 16),
+                    if (showBackButton)
+                      _buildLeading(context)!
+                    else
+                      const SizedBox(width: 16),
                     Text(title, style: IthakiTheme.appBarTitle),
                     const Spacer(),
                     ..._buildActions(),

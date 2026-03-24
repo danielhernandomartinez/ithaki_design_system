@@ -53,7 +53,13 @@ class IthakiTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: IthakiTheme.hintStyle,
-            suffixIcon: suffixIcon,
+            suffixIcon: suffixIcon != null
+                ? Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: suffixIcon,
+                  )
+                : null,
+            suffixIconConstraints: const BoxConstraints(maxWidth: 52, maxHeight: 48),
             contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),

@@ -35,9 +35,9 @@ class IthakiDropdown<T> extends StatelessWidget {
           icon: const IthakiIcon('arrow-down', size: 20, color: IthakiTheme.textSecondary),
           hint: Text(
             hint,
-            style: IthakiTheme.hintSmall,
+            style: IthakiTheme.hintStyle,
           ),
-          style: IthakiTheme.bodySmall,
+          style: IthakiTheme.labelField,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
             border: OutlineInputBorder(
