@@ -46,6 +46,18 @@ class CatalogHome extends StatelessWidget {
       'Icon': const _IconPage(),
       'Flag': const _FlagPage(),
       'ScreenLayout': const _ScreenLayoutPage(),
+      'MatchBar': const _MatchBarPage(),
+      'InfoTag': const _InfoTagPage(),
+      'JobRecommendationCard': const _JobRecommendationCardPage(),
+      'StatCard': const _StatCardPage(),
+      'CourseCard': const _CourseCardPage(),
+      'NewsTile': const _NewsTilePage(),
+      'GradientBanner': const _GradientBannerPage(),
+      'Footer': const _FooterPage(),
+      'NavDrawer': const _NavDrawerPage(),
+      'HatchProgressBar': const _HatchProgressBarPage(),
+      'ProductTourBanner': const _ProductTourBannerPage(),
+      'ProfileCompletionCard': const _ProfileCompletionCardPage(),
     };
 
     return Scaffold(
@@ -526,7 +538,7 @@ class _IconPage extends StatelessWidget {
           children: [
             IthakiIcon(name, size: 24),
             const SizedBox(height: 4),
-            Text(name, style: const TextStyle(fontSize: 10)),
+            Text(name, style: const TextStyle(fontSize: 14)),
           ],
         );
       }).toList(),
@@ -539,19 +551,41 @@ class _FlagPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final codes = ['es', 'us', 'gb', 'gr', 'de', 'fr', 'it', 'pt', 'nl', 'jp', 'br', 'in'];
-    return Wrap(
-      spacing: 12,
-      runSpacing: 12,
-      children: codes.map((code) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IthakiFlag(code),
-            const SizedBox(height: 4),
-            Text(code.toUpperCase(), style: const TextStyle(fontSize: 10)),
-          ],
-        );
-      }).toList(),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const _Label('Rectangular (default)'),
+        Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: codes.map((code) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IthakiFlag(code),
+                const SizedBox(height: 4),
+                Text(code.toUpperCase(), style: const TextStyle(fontSize: 14)),
+              ],
+            );
+          }).toList(),
+        ),
+        const SizedBox(height: 24),
+        const _Label('Oval'),
+        Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: codes.take(6).map((code) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IthakiFlag(code, oval: true),
+                const SizedBox(height: 4),
+                Text(code.toUpperCase(), style: const TextStyle(fontSize: 14)),
+              ],
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 }
@@ -575,6 +609,303 @@ class _ScreenLayoutPage extends StatelessWidget {
 }
 
 // ---------------------------------------------------------------------------
+// New widget pages
+// ---------------------------------------------------------------------------
+
+class _MatchBarPage extends StatelessWidget {
+  const _MatchBarPage();
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        _Label('85% match'),
+        IthakiMatchBar(percentage: 85, label: 'Match'),
+        SizedBox(height: 16),
+        _Label('50% match'),
+        IthakiMatchBar(percentage: 50, label: 'Match'),
+        SizedBox(height: 16),
+        _Label('20% match'),
+        IthakiMatchBar(percentage: 20, label: 'Match'),
+      ],
+    );
+  }
+}
+
+class _InfoTagPage extends StatelessWidget {
+  const _InfoTagPage();
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const _Label('With different icons'),
+        Wrap(
+          spacing: 16,
+          runSpacing: 12,
+          children: [
+            IthakiInfoTag(
+              icon: IthakiIcon('clock', size: 16, color: IthakiTheme.textSecondary),
+              label: '40h/week',
+            ),
+            IthakiInfoTag(
+              icon: IthakiIcon('pc', size: 16, color: IthakiTheme.textSecondary),
+              label: 'Remote',
+            ),
+            IthakiInfoTag(
+              icon: IthakiIcon('level', size: 16, color: IthakiTheme.textSecondary),
+              label: 'Senior',
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _JobRecommendationCardPage extends StatelessWidget {
+  const _JobRecommendationCardPage();
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const _Label('With initials'),
+        IthakiJobRecommendationCard(
+          companyName: 'Google',
+          companyInitials: 'G',
+          companyColor: const Color(0xFF4285F4),
+          jobTitle: 'Senior Flutter Developer',
+          salary: '\$120,000/year',
+          location: 'Madrid, Spain',
+          workMode: 'Remote',
+          employmentType: 'Full-Time',
+          level: 'Senior',
+          matchPercentage: 85,
+          matchLabel: 'Match',
+          onTap: () {},
+        ),
+        const SizedBox(height: 16),
+        const _Label('Minimal'),
+        IthakiJobRecommendationCard(
+          companyName: 'Figma',
+          companyInitials: 'F',
+          jobTitle: 'Product Designer',
+          salary: '\$90,000/year',
+          matchPercentage: 72,
+          matchLabel: 'Match',
+          onTap: () {},
+        ),
+      ],
+    );
+  }
+}
+
+class _StatCardPage extends StatelessWidget {
+  const _StatCardPage();
+  @override
+  Widget build(BuildContext context) {
+    return IthakiStatCard(
+      title: 'Job Applications',
+      rows: [
+        IthakiStatRowData(
+          icon: IthakiIcon('check', size: 18, color: IthakiTheme.primaryPurple),
+          label: 'Applied',
+          value: 12,
+          change: 3,
+        ),
+        IthakiStatRowData(
+          icon: IthakiIcon('eye', size: 18, color: IthakiTheme.primaryPurple),
+          label: 'Viewed',
+          value: 8,
+          change: -1,
+        ),
+        IthakiStatRowData(
+          icon: IthakiIcon('envelope', size: 18, color: IthakiTheme.primaryPurple),
+          label: 'Responses',
+          value: 4,
+        ),
+      ],
+    );
+  }
+}
+
+class _CourseCardPage extends StatelessWidget {
+  const _CourseCardPage();
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const _Label('With all metadata'),
+        IthakiCourseCard(
+          title: 'Introduction to Flutter',
+          description: 'Learn how to build beautiful mobile apps with Flutter framework.',
+          tags: const ['Flutter', 'Mobile', 'Dart'],
+          format: 'Online',
+          duration: '6 weeks',
+          level: 'Beginner',
+          onTap: () {},
+        ),
+        const SizedBox(height: 16),
+        const _Label('Minimal'),
+        IthakiCourseCard(
+          title: 'Advanced UI Patterns',
+          description: 'Deep dive into complex UI architectures and state management.',
+          onTap: () {},
+        ),
+      ],
+    );
+  }
+}
+
+class _NewsTilePage extends StatelessWidget {
+  const _NewsTilePage();
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        IthakiNewsTile(
+          tag: 'Career Tips',
+          date: 'Mar 20, 2026',
+          title: 'Top 10 Skills Employers Look For in 2026',
+          onTap: () {},
+        ),
+        const SizedBox(height: 12),
+        IthakiNewsTile(
+          tag: 'Industry News',
+          date: 'Mar 18, 2026',
+          title: 'Remote Work Trends: What to Expect This Year',
+          onTap: () {},
+        ),
+      ],
+    );
+  }
+}
+
+class _GradientBannerPage extends StatelessWidget {
+  const _GradientBannerPage();
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const _Label('Default gradient'),
+        IthakiGradientBanner(
+          title: 'Ready to find your next role?',
+          subtitle: 'Let us help you discover opportunities tailored to your skills.',
+          buttonLabel: 'Get Started',
+          onButtonPressed: () {},
+        ),
+        const SizedBox(height: 16),
+        const _Label('Custom colors'),
+        IthakiGradientBanner(
+          title: 'Complete your profile',
+          subtitle: 'A complete profile increases your chances of getting hired.',
+          buttonLabel: 'Fill Profile',
+          gradientColors: const [Color(0xFF0D47A1), Color(0xFF1976D2), Color(0xFF42A5F5)],
+          onButtonPressed: () {},
+        ),
+      ],
+    );
+  }
+}
+
+class _FooterPage extends StatelessWidget {
+  const _FooterPage();
+  @override
+  Widget build(BuildContext context) {
+    return IthakiFooter(
+      brandName: 'Ithaki Talent',
+      copyright: '2026 Ithaki. All rights reserved.',
+      privacyLabel: 'Privacy Policy',
+      termsLabel: 'Terms of Service',
+      onPrivacyTap: () {},
+      onTermsTap: () {},
+    );
+  }
+}
+
+class _NavDrawerPage extends StatelessWidget {
+  const _NavDrawerPage();
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 600,
+      child: IthakiNavDrawer(
+        currentRoute: '/home',
+        items: const [
+          IthakiNavItem(icon: 'home', label: 'Home', route: '/home'),
+          IthakiNavItem(icon: 'search', label: 'Job Search', route: '/search'),
+          IthakiNavItem(icon: 'envelope', label: 'My Applications', route: '/applications', badge: 3),
+          IthakiNavItem(icon: 'chat', label: 'Career Assistant', route: '/assistant'),
+          IthakiNavItem(icon: 'check', label: 'My Assessments', route: '/assessments'),
+          IthakiNavItem(icon: 'learn', label: 'Learning Hub', route: '/learning'),
+          IthakiNavItem(icon: 'news', label: 'Blog & News', route: '/news'),
+        ],
+        profileProgress: 0.45,
+        languageLabel: 'English',
+        languageFlagCode: 'gb',
+        onLanguageTap: () {},
+        onItemTap: (_) {},
+      ),
+    );
+  }
+}
+
+class _HatchProgressBarPage extends StatelessWidget {
+  const _HatchProgressBarPage();
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        _Label('25%'),
+        IthakiHatchProgressBar(progress: 0.25),
+        SizedBox(height: 16),
+        _Label('50%'),
+        IthakiHatchProgressBar(progress: 0.50),
+        SizedBox(height: 16),
+        _Label('75%'),
+        IthakiHatchProgressBar(progress: 0.75),
+        SizedBox(height: 16),
+        _Label('100%'),
+        IthakiHatchProgressBar(progress: 1.0),
+      ],
+    );
+  }
+}
+
+class _ProductTourBannerPage extends StatelessWidget {
+  const _ProductTourBannerPage();
+  @override
+  Widget build(BuildContext context) {
+    return IthakiProductTourBanner(
+      onStart: () {},
+      onDismiss: () {},
+    );
+  }
+}
+
+class _ProfileCompletionCardPage extends StatelessWidget {
+  const _ProfileCompletionCardPage();
+  @override
+  Widget build(BuildContext context) {
+    return IthakiProfileCompletionCard(
+      items: const [
+        IthakiProfileChecklistItem(label: 'About Me', completed: true),
+        IthakiProfileChecklistItem(label: 'Photo', completed: true),
+        IthakiProfileChecklistItem(label: 'My Experience', completed: false),
+        IthakiProfileChecklistItem(label: 'My Education', completed: false),
+        IthakiProfileChecklistItem(label: 'My Skills', completed: false),
+        IthakiProfileChecklistItem(label: 'Documents', completed: false),
+      ],
+      benefits: const [
+        'Higher visibility to employers',
+        'Better job matches',
+        'Priority application review',
+      ],
+      onFillProfile: () {},
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Helper
 // ---------------------------------------------------------------------------
 
@@ -585,7 +916,7 @@ class _Label extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
-      child: Text(text, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: IthakiTheme.textSecondary)),
+      child: Text(text, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: IthakiTheme.textSecondary)),
     );
   }
 }
