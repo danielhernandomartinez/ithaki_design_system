@@ -25,6 +25,7 @@ export 'src/widgets/ithaki_screen_layout.dart';
 export 'src/widgets/ithaki_match_bar.dart';
 export 'src/widgets/ithaki_info_tag.dart';
 export 'src/widgets/ithaki_job_recommendation_card.dart';
+export 'src/widgets/ithaki_job_search_card.dart';
 export 'src/widgets/ithaki_stat_card.dart';
 export 'src/widgets/ithaki_course_card.dart';
 export 'src/widgets/ithaki_news_tile.dart';

@@ -24,9 +24,12 @@ class IthakiInfoTag extends StatelessWidget {
       children: [
         icon,
         const SizedBox(width: 4),
-        Text(
-          label,
-          style: TextStyle(fontSize: fontSize, color: color),
+        Flexible(
+          child: Text(
+            label,
+            style: TextStyle(fontSize: fontSize, color: color),
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );
