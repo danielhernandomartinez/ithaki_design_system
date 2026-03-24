@@ -50,7 +50,7 @@ class IthakiJobSearchCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const tagIconColor = IthakiTheme.textPrimary;
+    const tagIconColor = IthakiTheme.graphite;
     const tagIconSize = 16.0;
 
     return Container(
@@ -59,7 +59,7 @@ class IthakiJobSearchCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: IthakiTheme.borderLight),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -81,16 +81,16 @@ class IthakiJobSearchCard extends StatelessWidget {
               // Logo placeholder
               companyLogo ??
                   Container(
-                    width: 48,
-                    height: 48,
+                    width: 72,
+                    height: 72,
                     decoration: BoxDecoration(
                       color: IthakiTheme.softGray,
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                     alignment: Alignment.center,
                     child: const IthakiIcon(
                       'briefcase-work',
-                      size: 22,
+                      size: 32,
                       color: IthakiTheme.lightGraphite,
                     ),
                   ),
@@ -120,7 +120,9 @@ class IthakiJobSearchCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 14),
+          const Divider(height: 1, color: IthakiTheme.lightGray),
+          const SizedBox(height: 14),
 
           // Salary
           Text(
@@ -142,21 +144,25 @@ class IthakiJobSearchCard extends StatelessWidget {
             backgroundColor: matchBackgroundColor ?? IthakiTheme.matchBarBg,
             showPercentage: matchPercentage > 0,
           ),
-          const SizedBox(height: 12),
-
+          const SizedBox(height: 14),
+          const Divider(height: 1, color: IthakiTheme.lightGray),
+          const SizedBox(height: 14),
           // Category chip
           if (category != null) ...[
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                border: Border.all(color: IthakiTheme.borderLight),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Text(
-                category!,
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: IthakiTheme.textPrimary,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: IthakiTheme.badgeLime,
+                ),
+                child: Text(
+                  category!,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: IthakiTheme.textPrimary,
+                  ),
                 ),
               ),
             ),
@@ -175,6 +181,7 @@ class IthakiJobSearchCard extends StatelessWidget {
                         icon: const IthakiIcon('location',
                             size: tagIconSize, color: tagIconColor),
                         label: location!,
+                        color: IthakiTheme.textPrimary,
                       ),
                     if (location != null && employmentType != null)
                       const SizedBox(height: 8),
@@ -183,6 +190,7 @@ class IthakiJobSearchCard extends StatelessWidget {
                         icon: const IthakiIcon('clock',
                             size: tagIconSize, color: tagIconColor),
                         label: employmentType!,
+                        color: IthakiTheme.textPrimary,
                       ),
                   ],
                 ),
@@ -196,6 +204,7 @@ class IthakiJobSearchCard extends StatelessWidget {
                         icon: const IthakiIcon('briefcase-work',
                             size: tagIconSize, color: tagIconColor),
                         label: workMode!,
+                        color: IthakiTheme.textPrimary,
                       ),
                     if (workMode != null && level != null)
                       const SizedBox(height: 8),
@@ -204,6 +213,7 @@ class IthakiJobSearchCard extends StatelessWidget {
                         icon: const IthakiIcon('level',
                             size: tagIconSize, color: tagIconColor),
                         label: level!,
+                        color: IthakiTheme.textPrimary,
                       ),
                   ],
                 ),
@@ -214,7 +224,7 @@ class IthakiJobSearchCard extends StatelessWidget {
           // Action buttons
           if (onSave != null || onView != null) ...[
             const SizedBox(height: 14),
-            const Divider(height: 1, color: IthakiTheme.borderLight),
+            const Divider(height: 1, color: IthakiTheme.lightGray),
             const SizedBox(height: 14),
             Row(
               children: [
@@ -228,10 +238,10 @@ class IthakiJobSearchCard extends StatelessWidget {
                           side: BorderSide(
                             color: isSaved
                                 ? IthakiTheme.primaryPurple
-                                : IthakiTheme.borderLight,
+                                : IthakiTheme.softGraphite,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24),
+                            borderRadius: BorderRadius.circular(30),
                           ),
                         ),
                         child: Row(
@@ -242,7 +252,7 @@ class IthakiJobSearchCard extends StatelessWidget {
                               size: 18,
                               color: isSaved
                                   ? IthakiTheme.primaryPurple
-                                  : IthakiTheme.textPrimary,
+                                  : IthakiTheme.graphite,
                             ),
                             const SizedBox(width: 4),
                             Text(
@@ -272,7 +282,7 @@ class IthakiJobSearchCard extends StatelessWidget {
                           foregroundColor: Colors.white,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24),
+                            borderRadius: BorderRadius.circular(30),
                           ),
                         ),
                         child: const Text(
