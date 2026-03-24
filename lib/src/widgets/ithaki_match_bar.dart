@@ -22,6 +22,7 @@ class IthakiMatchBar extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
+      width: double.infinity,
       height: 36,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
