@@ -34,3 +34,6 @@ export 'src/widgets/ithaki_nav_drawer.dart';
 export 'src/widgets/ithaki_hatch_progress_bar.dart';
 export 'src/widgets/ithaki_product_tour_banner.dart';
 export 'src/widgets/ithaki_profile_completion_card.dart';
+export 'src/widgets/ithaki_settings_widgets.dart';
+export 'src/widgets/ithaki_bottom_sheet_base.dart';
+export 'src/widgets/ithaki_success_banner.dart';
