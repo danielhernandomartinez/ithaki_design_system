@@ -9,6 +9,7 @@ class IthakiMatchBar extends StatelessWidget {
   final String label;
   final List<Color> gradientColors;
   final Color backgroundColor;
+  final bool showPercentage;
 
   const IthakiMatchBar({
     super.key,
@@ -16,6 +17,7 @@ class IthakiMatchBar extends StatelessWidget {
     required this.label,
     this.gradientColors = const [Color(0xFF50C948), IthakiTheme.matchGreen],
     this.backgroundColor = IthakiTheme.matchBarBg,
+    this.showPercentage = true,
   });
 
   @override
@@ -31,6 +33,9 @@ class IthakiMatchBar extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: Stack(
         children: [
+          // Full-width invisible box to force Stack to take all available width
+          const SizedBox.expand(),
+          // Gradient fill
           FractionallySizedBox(
             widthFactor: percentage / 100,
             child: Container(
@@ -45,24 +50,26 @@ class IthakiMatchBar extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Row(
                 children: [
-                  Container(
-                    width: 28,
-                    height: 28,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      '$percentage%',
-                      style: const TextStyle(
-                        fontSize: 9,
-                        fontWeight: FontWeight.bold,
-                        color: IthakiTheme.textPrimary,
+                  if (showPercentage) ...[
+                    Container(
+                      width: 28,
+                      height: 28,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        '$percentage%',
+                        style: const TextStyle(
+                          fontSize: 9,
+                          fontWeight: FontWeight.bold,
+                          color: IthakiTheme.textPrimary,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(width: 6),
+                    const SizedBox(width: 6),
+                  ],
                   Flexible(
                     child: Text(
                       label,

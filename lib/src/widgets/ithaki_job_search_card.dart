@@ -54,6 +54,7 @@ class IthakiJobSearchCard extends StatelessWidget {
     const tagIconSize = 16.0;
 
     return Container(
+      width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -61,7 +62,7 @@ class IthakiJobSearchCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Posted time
           Text(
@@ -139,14 +140,14 @@ class IthakiJobSearchCard extends StatelessWidget {
             gradientColors: matchGradientColors ??
                 const [Color(0xFF50C948), IthakiTheme.matchGreen],
             backgroundColor: matchBackgroundColor ?? IthakiTheme.matchBarBg,
+            showPercentage: matchPercentage > 0,
           ),
           const SizedBox(height: 12),
 
           // Category chip
           if (category != null) ...[
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
                 border: Border.all(color: IthakiTheme.borderLight),
                 borderRadius: BorderRadius.circular(20),
@@ -243,7 +244,7 @@ class IthakiJobSearchCard extends StatelessWidget {
                                   ? IthakiTheme.primaryPurple
                                   : IthakiTheme.textPrimary,
                             ),
-                            const SizedBox(width: 6),
+                            const SizedBox(width: 4),
                             Text(
                               isSaved ? 'Saved' : 'Save Job',
                               style: TextStyle(
@@ -259,8 +260,7 @@ class IthakiJobSearchCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (onSave != null && onView != null)
-                  const SizedBox(width: 10),
+                if (onSave != null && onView != null) const SizedBox(width: 10),
                 if (onView != null)
                   Expanded(
                     child: SizedBox(
