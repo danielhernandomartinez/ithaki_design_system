@@ -16,7 +16,7 @@ class IthakiTheme {
   static const softGraphite = Color(0xFF787878);
   static const borderLight = Color(0xFFD0D0D0);
   static const cardBackground = Color(0xFFF2F2F2);
-  static const graphite = Color(0x1A4B4B4B);
+  static const graphite = Color(0xFF4B4B4B);
   static const successGreen = Color(0xFF4CAF50);
   static const matchGreen = Color(0xFF75E767);
   static const badgeLime = Color(0xFFC8FF5D);

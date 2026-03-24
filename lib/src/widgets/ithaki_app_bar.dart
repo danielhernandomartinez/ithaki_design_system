@@ -107,23 +107,32 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
     if (showMenuAndAvatar) {
       return GestureDetector(
         key: menuKey,
+        behavior: HitTestBehavior.opaque,
         onTap: onMenuPressed,
-        child: Container(
-          width: 40,
-          height: 40,
-          margin: const EdgeInsets.only(left: 4),
-          decoration: menuOpen
-              ? BoxDecoration(
-                  color: const Color(0xFFF6F2FE),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: const Color(0xFF905CFF), width: 1.5),
-                )
-              : null,
-          child: Center(
-            child: IthakiIcon(
-              'menu',
-              size: 22,
-              color: menuOpen ? const Color(0xFF905CFF) : IthakiTheme.textPrimary,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 4),
+          child: SizedBox(
+            width: 48,
+            height: 48,
+            child: Center(
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: menuOpen
+                    ? BoxDecoration(
+                        color: const Color(0xFFF6F2FE),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: const Color(0xFF905CFF), width: 1.5),
+                      )
+                    : null,
+                child: Center(
+                  child: IthakiIcon(
+                    'menu',
+                    size: 22,
+                    color: menuOpen ? const Color(0xFF905CFF) : IthakiTheme.textPrimary,
+                  ),
+                ),
+              ),
             ),
           ),
         ),
@@ -144,12 +153,13 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
           onTap: onAvatarPressed,
           child: Container(
             margin: const EdgeInsets.only(right: 8),
-            decoration: profileOpen
-                ? BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    border: Border.all(color: const Color(0xFF905CFF), width: 2),
-                  )
-                : null,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(
+                color: profileOpen ? const Color(0xFF905CFF) : Colors.transparent,
+                width: 2,
+              ),
+            ),
             child: CircleAvatar(
               radius: 16,
               backgroundColor: IthakiTheme.successGreen,
