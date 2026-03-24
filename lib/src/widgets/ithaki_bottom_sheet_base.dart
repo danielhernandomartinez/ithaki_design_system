@@ -25,9 +25,14 @@ class BottomSheetBase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
-    final maxHeight = mq.size.height * 0.92 - mq.viewInsets.bottom;
+    final keyboardHeight = mq.viewInsets.bottom;
+    // viewPadding is always the full system padding (gesture bar / home indicator)
+    // regardless of keyboard state — more reliable than padding.bottom
+    final systemBottom = mq.viewPadding.bottom;
+    final maxHeight = mq.size.height * 0.92 - keyboardHeight;
+
     return Padding(
-      padding: EdgeInsets.only(bottom: mq.viewInsets.bottom),
+      padding: EdgeInsets.only(bottom: keyboardHeight),
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight),
         child: Container(
@@ -61,7 +66,9 @@ class BottomSheetBase extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Flexible(child: child),
-              SizedBox(height: mq.padding.bottom + 24),
+              // On gesture-nav phones systemBottom ≈ 34 (iPhone) / 24–48 (Android).
+              // On 3-button-nav phones systemBottom = 0 → fall back to 24.
+              SizedBox(height: systemBottom > 0 ? systemBottom + 12 : 24),
             ],
           ),
         ),
