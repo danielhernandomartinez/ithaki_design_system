@@ -9,6 +9,8 @@ class IthakiOutlineButton extends StatelessWidget {
   final Color? foregroundColor;
   final double borderRadius;
   final EdgeInsetsGeometry? padding;
+  /// When true the button shrinks to fit its content instead of expanding full-width.
+  final bool autoWidth;
 
   const IthakiOutlineButton(
     this.label, {
@@ -19,6 +21,7 @@ class IthakiOutlineButton extends StatelessWidget {
     this.foregroundColor,
     this.borderRadius = 30,
     this.padding,
+    this.autoWidth = false,
   });
 
   @override
@@ -30,22 +33,22 @@ class IthakiOutlineButton extends StatelessWidget {
       padding: padding ??
           const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       foregroundColor: foregroundColor ?? IthakiTheme.textPrimary,
+      tapTargetSize: autoWidth ? MaterialTapTargetSize.shrinkWrap : null,
     );
 
-    return SizedBox(
-      width: double.infinity,
-      child: icon != null
-          ? OutlinedButton.icon(
-              onPressed: onPressed,
-              icon: icon!,
-              label: Text(label),
-              style: style,
-            )
-          : OutlinedButton(
-              onPressed: onPressed,
-              style: style,
-              child: Text(label),
-            ),
-    );
+    final btn = icon != null
+        ? OutlinedButton.icon(
+            onPressed: onPressed,
+            icon: icon!,
+            label: Text(label),
+            style: style,
+          )
+        : OutlinedButton(
+            onPressed: onPressed,
+            style: style,
+            child: Text(label),
+          );
+
+    return autoWidth ? btn : SizedBox(width: double.infinity, child: btn);
   }
 }
