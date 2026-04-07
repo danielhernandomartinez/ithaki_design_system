@@ -8,6 +8,9 @@ class IthakiSelectorField extends StatelessWidget {
   final VoidCallback onTap;
   final bool optional;
   final bool enabled;
+  final double fontSize;
+  final double verticalPadding;
+  final double arrowSize;
 
   const IthakiSelectorField({
     super.key,
@@ -17,6 +20,9 @@ class IthakiSelectorField extends StatelessWidget {
     this.value,
     this.optional = false,
     this.enabled = true,
+    this.fontSize = 16,
+    this.verticalPadding = 14,
+    this.arrowSize = 20,
   });
 
   @override
@@ -43,7 +49,7 @@ class IthakiSelectorField extends StatelessWidget {
           onTap: enabled ? onTap : null,
           child: Container(
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+            padding: EdgeInsets.symmetric(horizontal: 14, vertical: verticalPadding),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
@@ -56,13 +62,14 @@ class IthakiSelectorField extends StatelessWidget {
                 Expanded(
                   child: Text(
                     value ?? hint,
-                    style: selected ? IthakiTheme.labelField : IthakiTheme.hintStyle,
+                    style: (selected ? IthakiTheme.labelField : IthakiTheme.hintStyle)
+                        .copyWith(fontSize: fontSize),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Icon(
                   Icons.keyboard_arrow_down,
-                  size: 20,
+                  size: arrowSize,
                   color: enabled ? IthakiTheme.textSecondary : IthakiTheme.softGraphite,
                 ),
               ],
