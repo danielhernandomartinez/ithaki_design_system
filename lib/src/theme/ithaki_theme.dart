@@ -19,6 +19,15 @@ class IthakiTheme {
   static const graphite = Color(0xFF4B4B4B);
   static const successGreen = Color(0xFF4CAF50);
   static const matchGreen = Color(0xFF75E767);
+  static const matchGradientHighStart = Color(0xFF50C948);
+  static const matchGradientGoodStart = Color(0xFFA8D84E);
+  static const matchGradientGoodEnd = Color(0xFFC8E86E);
+  static const matchGradientWeakStart = Color(0xFFE8C84E);
+  static const matchGradientWeakEnd = Color(0xFFF0DD6E);
+  static const matchGradientNoneStart = Color(0xFFBDBDBD);
+  static const matchGradientNoneEnd = Color(0xFFD0D0D0);
+  static const matchBgGood = Color(0xFFF5F9E8);
+  static const matchBgWeak = Color(0xFFFDF8E4);
   static const badgeLime = Color(0xFFC8FF5D);
   static const accentPurpleLight = Color(0xFFAD86FF);
   static const errorRed = Color(0xFFC9363E);
