@@ -5,6 +5,7 @@ export 'src/widgets/ithaki_text_field.dart';
 export 'src/widgets/ithaki_dropdown.dart';
 export 'src/widgets/ithaki_icon.dart';
 export 'src/widgets/ithaki_flag.dart';
+export 'src/widgets/ithaki_language_flag.dart';
 export 'src/widgets/ithaki_app_bar.dart';
 export 'src/widgets/ithaki_step_tabs.dart';
 export 'src/widgets/search_bottom_sheet.dart';
