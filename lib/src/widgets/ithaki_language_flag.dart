@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../theme/ithaki_theme.dart';
-import 'ithaki_icon.dart';
 
 class IthakiLanguageFlag extends StatelessWidget {
   final String language;
@@ -16,13 +15,6 @@ class IthakiLanguageFlag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (_usesNeutralLanguageIcon(language)) {
-      return _uniformFlagFrame(
-        IthakiIcon('flag', size: size * 0.75, color: IthakiTheme.softGraphite),
-        addSoftBg: true,
-      );
-    }
-
     final localAsset = languageLocalFlagAsset(language);
     if (localAsset != null) {
       return _uniformFlagFrame(
@@ -49,8 +41,13 @@ class IthakiLanguageFlag extends StatelessWidget {
     }
 
     return _uniformFlagFrame(
-      IthakiIcon('flag', size: size * 0.75, color: IthakiTheme.softGraphite),
-      addSoftBg: true,
+      SvgPicture.asset(
+        'packages/ithaki_design_system/assets/flags/un.svg',
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        placeholderBuilder: (_) => SizedBox(width: size, height: size),
+      ),
     );
   }
 
@@ -173,32 +170,6 @@ String _normalizeLanguage(String value) {
       .trim();
 }
 
-bool _usesNeutralLanguageIcon(String language) {
-  final normalized = _normalizeLanguage(language);
-  if (normalized.isEmpty) return true;
-
-  if (_neutralLanguageKeys.contains(normalized)) {
-    return true;
-  }
-
-  return _neutralLanguageKeys.any(normalized.contains);
-}
-
-const Set<String> _neutralLanguageKeys = {
-  'latin',
-  'interlingua',
-  'interlingue',
-  'ido',
-  'esperanto',
-  'volapuk',
-  'old church slavonic',
-  'church slavic',
-  'church slavonic',
-  'old bulgarian',
-  'old slavonic',
-  'avestan',
-};
-
 const Map<String, String> _languageToLocalFlagAsset = {
   'basque': 'basque',
   'galician': 'galicia',
@@ -273,9 +244,10 @@ const Map<String, String> _languageToCountryCode = {
   'danish': 'DK',
   'divehi': 'MV',
   'dhivehi': 'MV',
+  'maldivian': 'MV',
   'dutch': 'NL',
   'english': 'GB',
-  'esperanto': 'EU',
+  'esperanto': 'UN',
   'estonian': 'EE',
   'ewe': 'GH',
   'faroese': 'FO',
@@ -299,12 +271,12 @@ const Map<String, String> _languageToCountryCode = {
   'hindi': 'IN',
   'hiri motu': 'PG',
   'hungarian': 'HU',
-  'interlingua': 'IT',
-  'interlingue': 'IT',
+  'interlingua': 'UN',
+  'interlingue': 'UN',
   'irish': 'IE',
   'igbo': 'NG',
   'inupiaq': 'US',
-  'ido': 'IT',
+  'ido': 'UN',
   'icelandic': 'IS',
   'italian': 'IT',
   'inuktitut': 'CA',
@@ -328,7 +300,7 @@ const Map<String, String> _languageToCountryCode = {
   'kurmanji': 'TR',
   'kwanyama': 'AO',
   'kuanyama': 'AO',
-  'latin': 'IT',
+  'latin': 'VA',
   'luganda': 'UG',
   'limburgish': 'NL',
   'limburgan': 'NL',
@@ -430,7 +402,7 @@ const Map<String, String> _languageToCountryCode = {
   'uzbek': 'UZ',
   'venda': 'ZA',
   'vietnamese': 'VN',
-  'volapuk': 'DE',
+  'volapuk': 'UN',
   'walloon': 'BE',
   'welsh': 'GB',
   'wolof': 'SN',
