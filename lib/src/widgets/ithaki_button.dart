@@ -28,17 +28,23 @@ class IthakiButton extends StatelessWidget {
     if (variant == IthakiButtonVariant.outline) {
       return SizedBox(
         width: double.infinity,
-        height: 52,
-        child: OutlinedButton(
-          onPressed: isEnabled ? onPressed : null,
-          style: OutlinedButton.styleFrom(
-            shape: shape,
-            side: const BorderSide(color: IthakiTheme.lightGraphite),
-            foregroundColor: IthakiTheme.textPrimary,
-          ),
-          child: Text(
-            label,
-            style: IthakiTheme.buttonLabel,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 52),
+          child: OutlinedButton(
+            onPressed: isEnabled ? onPressed : null,
+            style: OutlinedButton.styleFrom(
+              shape: shape,
+              side: const BorderSide(color: IthakiTheme.lightGraphite),
+              foregroundColor: IthakiTheme.textPrimary,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            ),
+            child: Text(
+              label,
+              style: IthakiTheme.buttonLabel,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ),
       );
@@ -48,20 +54,26 @@ class IthakiButton extends StatelessWidget {
 
     return SizedBox(
       width: double.infinity,
-      height: 52,
-      child: ElevatedButton(
-        onPressed: isEnabled ? onPressed : null,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: bgColor,
-          disabledBackgroundColor: IthakiTheme.primaryPurpleLight,
-          foregroundColor: Colors.white,
-          disabledForegroundColor: Colors.white,
-          shape: shape,
-          elevation: 0,
-        ),
-        child: Text(
-          label,
-          style: IthakiTheme.buttonLabel,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 52),
+        child: ElevatedButton(
+          onPressed: isEnabled ? onPressed : null,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: bgColor,
+            disabledBackgroundColor: IthakiTheme.primaryPurpleLight,
+            foregroundColor: Colors.white,
+            disabledForegroundColor: Colors.white,
+            shape: shape,
+            elevation: 0,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          ),
+          child: Text(
+            label,
+            style: IthakiTheme.buttonLabel,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ),
     );

@@ -44,3 +44,4 @@ export 'src/widgets/ithaki_success_banner.dart';
 export 'src/widgets/ithaki_option_chip.dart';
 export 'src/widgets/ithaki_entry_list_shell.dart';
 export 'src/widgets/ithaki_meta_cell.dart';
+export 'src/widgets/ithaki_social_auth_button.dart';

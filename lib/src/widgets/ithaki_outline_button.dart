@@ -40,13 +40,23 @@ class IthakiOutlineButton extends StatelessWidget {
         ? OutlinedButton.icon(
             onPressed: onPressed,
             icon: icon!,
-            label: Text(label),
+            label: Text(
+              label,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
             style: style,
           )
         : OutlinedButton(
             onPressed: onPressed,
             style: style,
-            child: Text(label),
+            child: Text(
+              label,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
           );
 
     return autoWidth ? btn : SizedBox(width: double.infinity, child: btn);
