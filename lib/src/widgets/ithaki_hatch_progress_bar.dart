@@ -56,14 +56,15 @@ class _HatchPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     canvas.drawRect(
       Rect.fromLTWH(0, 0, size.width, size.height),
-      Paint()..color = const Color(0xFFE0E0E0),
+      Paint()..color = IthakiTheme.hatchBackground,
     );
     final paint = Paint()
-      ..color = const Color(0xFFCCCCCC)
+      ..color = IthakiTheme.hatchStripe
       ..strokeWidth = 1.5;
     const spacing = 8.0;
     for (double x = -size.height; x < size.width + size.height; x += spacing) {
-      canvas.drawLine(Offset(x, size.height), Offset(x + size.height, 0), paint);
+      canvas.drawLine(
+          Offset(x, size.height), Offset(x + size.height, 0), paint);
     }
   }
 

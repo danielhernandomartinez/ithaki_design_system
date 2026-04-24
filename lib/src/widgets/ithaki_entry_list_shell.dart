@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../theme/ithaki_theme.dart';
 import 'ithaki_app_bar.dart';
 import 'ithaki_button.dart';
+import 'ithaki_icon.dart';
 
 class IthakiEntryListShell extends StatelessWidget {
   final String appBarTitle;
@@ -64,14 +65,15 @@ class IthakiEntryListShell extends StatelessWidget {
               ...entries,
               OutlinedButton.icon(
                 onPressed: onAddPressed,
-                icon: const Icon(Icons.add, size: 16),
+                icon: const IthakiIcon('plus', size: 16),
                 label: Text(addButtonLabel),
                 style: OutlinedButton.styleFrom(
                   side: const BorderSide(color: IthakiTheme.softGraphite),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   foregroundColor: IthakiTheme.textPrimary,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),

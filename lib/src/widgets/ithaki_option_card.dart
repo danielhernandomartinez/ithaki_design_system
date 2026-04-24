@@ -36,22 +36,25 @@ class IthakiOptionCard extends StatelessWidget {
       width: 20,
       height: 20,
       decoration: BoxDecoration(
-        color: selected ? IthakiTheme.primaryPurple : Colors.transparent,
+        color: selected ? IthakiTheme.primaryPurple : IthakiTheme.transparent,
         border: Border.all(
-          color: selected ? IthakiTheme.primaryPurple : IthakiTheme.softGraphite,
+          color:
+              selected ? IthakiTheme.primaryPurple : IthakiTheme.softGraphite,
           width: 1.5,
         ),
         borderRadius: BorderRadius.circular(5),
       ),
       child: selected
-          ? const Icon(Icons.check, size: 13, color: Colors.white)
+          ? const IthakiIcon('check',
+              size: 13, color: IthakiTheme.foregroundWhite)
           : null,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final resolvedIconColor = iconColor ?? (isSelected ? IthakiTheme.primaryPurple : IthakiTheme.textPrimary);
+    final resolvedIconColor = iconColor ??
+        (isSelected ? IthakiTheme.primaryPurple : IthakiTheme.textPrimary);
     final textColor = isSelected && enabled
         ? IthakiTheme.primaryPurple
         : enabled
@@ -61,7 +64,8 @@ class IthakiOptionCard extends StatelessWidget {
     Widget card = AnimatedContainer(
       duration: const Duration(milliseconds: 150),
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: axis == Axis.horizontal ? 14 : 14),
+      padding: EdgeInsets.symmetric(
+          horizontal: 16, vertical: axis == Axis.horizontal ? 14 : 14),
       decoration: BoxDecoration(
         color: isSelected && enabled
             ? IthakiTheme.backgroundViolet
@@ -78,9 +82,12 @@ class IthakiOptionCard extends StatelessWidget {
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (icon != null) IthakiIcon(icon!, size: iconSize, color: resolvedIconColor),
+                if (icon != null)
+                  IthakiIcon(icon!, size: iconSize, color: resolvedIconColor),
                 if (icon != null) const SizedBox(height: 8),
-                Text(label, style: IthakiTheme.bodySmallBold.copyWith(color: textColor)),
+                Text(label,
+                    style:
+                        IthakiTheme.bodySmallBold.copyWith(color: textColor)),
                 if (subtitle != null) ...[
                   const SizedBox(height: 4),
                   Text(subtitle!, style: IthakiTheme.captionDescription),
@@ -100,7 +107,9 @@ class IthakiOptionCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(label, style: IthakiTheme.bodySmallSemiBold.copyWith(color: textColor)),
+                      Text(label,
+                          style: IthakiTheme.bodySmallSemiBold
+                              .copyWith(color: textColor)),
                       if (subtitle != null) ...[
                         const SizedBox(height: 2),
                         Text(
@@ -108,7 +117,8 @@ class IthakiOptionCard extends StatelessWidget {
                           style: IthakiTheme.captionDescription.copyWith(
                             color: enabled
                                 ? IthakiTheme.textSecondary
-                                : IthakiTheme.textSecondary.withOpacity(0.5),
+                                : IthakiTheme.textSecondary
+                                    .withValues(alpha: 0.5),
                           ),
                         ),
                       ],

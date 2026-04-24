@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/ithaki_theme.dart';
 import 'ithaki_icon.dart';
 import 'ithaki_text_field.dart';
+
 class IthakiPasswordField extends StatefulWidget {
   final String label;
   final String hint;
@@ -52,7 +53,7 @@ class _IthakiPasswordFieldState extends State<IthakiPasswordField> {
         icon: IthakiIcon(
           _obscure ? 'eye' : 'eye-closed',
           size: 20,
-          color: hasText ? Colors.black : IthakiTheme.softGraphite,
+          color: hasText ? IthakiTheme.textPrimary : IthakiTheme.softGraphite,
         ),
         onPressed: () => setState(() => _obscure = !_obscure),
       ),

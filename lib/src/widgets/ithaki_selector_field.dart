@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/ithaki_theme.dart';
+import 'ithaki_icon.dart';
 
 class IthakiSelectorField extends StatelessWidget {
   final String label;
@@ -49,11 +50,14 @@ class IthakiSelectorField extends StatelessWidget {
           onTap: enabled ? onTap : null,
           child: Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: 14, vertical: verticalPadding),
+            padding:
+                EdgeInsets.symmetric(horizontal: 14, vertical: verticalPadding),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: selected ? IthakiTheme.primaryPurple : IthakiTheme.borderLight,
+                color: selected
+                    ? IthakiTheme.primaryPurple
+                    : IthakiTheme.borderLight,
                 width: selected ? 1.5 : 1,
               ),
             ),
@@ -62,15 +66,19 @@ class IthakiSelectorField extends StatelessWidget {
                 Expanded(
                   child: Text(
                     value ?? hint,
-                    style: (selected ? IthakiTheme.labelField : IthakiTheme.hintStyle)
+                    style: (selected
+                            ? IthakiTheme.labelField
+                            : IthakiTheme.hintStyle)
                         .copyWith(fontSize: fontSize),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                Icon(
-                  Icons.keyboard_arrow_down,
+                IthakiIcon(
+                  'arrow-down',
                   size: arrowSize,
-                  color: enabled ? IthakiTheme.textSecondary : IthakiTheme.softGraphite,
+                  color: enabled
+                      ? IthakiTheme.textSecondary
+                      : IthakiTheme.softGraphite,
                 ),
               ],
             ),

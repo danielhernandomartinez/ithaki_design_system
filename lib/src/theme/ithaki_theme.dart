@@ -4,7 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 class IthakiTheme {
   static const primaryPurple = Color(0xFF905CFF);
   static const primaryPurpleLight = Color(0xFFC7ADFF);
+  static const transparent = Color(0x00000000);
   static const backgroundWhite = Color(0xFFFFFFFF);
+  static const foregroundWhite = Color(0xFFFFFFFF);
+  static const foregroundWhiteMuted = Color(0xB3FFFFFF);
+  static const foregroundWhiteOverlay = Color(0x33FFFFFF);
   static const backgroundViolet = Color(0xFFF6F2FE);
   static const chipActive = Color(0xFFE9DEFF);
   static const textPrimary = Color(0xFF1E1E1E);
@@ -29,11 +33,22 @@ class IthakiTheme {
   static const matchBgGood = Color(0xFFF5F9E8);
   static const matchBgWeak = Color(0xFFFDF8E4);
   static const badgeLime = Color(0xFFC8FF5D);
+  static const navLime = Color(0xFFCCFF00);
   static const accentPurpleLight = Color(0xFFAD86FF);
   static const errorRed = Color(0xFFC9363E);
   static const placeholderBg = Color(0xFFE0E0E0);
   static const placeholderIcon = Color(0xFFBDBDBD);
   static const matchBarBg = Color(0xFFEAFBE8);
+  static const appBarShadow = Color(0x0F000000);
+  static const gradientPurpleDark = Color(0xFF2D0A6E);
+  static const gradientPurpleMid = Color(0xFF5B2DB5);
+  static const gradientPurpleLight = Color(0xFF7B52D3);
+  static const hatchBackground = Color(0xFFE0E0E0);
+  static const hatchBackgroundMuted = Color(0xFFE8E8E8);
+  static const hatchStripe = Color(0xFFCCCCCC);
+  static const profileCompletionBg = Color(0xFFDACCF8);
+  static const jobCardHighlight = Color(0xFFF0EAFA);
+  static const successBannerBg = Color(0xFF3D3D3A);
 
   // 24px — main titles
   static const headingLarge = TextStyle(
@@ -186,7 +201,7 @@ class IthakiTheme {
   static const badgeLabel = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
-    color: Color(0xFFFFFFFF),
+    color: foregroundWhite,
   );
 
   static ThemeData get light => ThemeData(
@@ -201,7 +216,7 @@ class IthakiTheme {
         appBarTheme: const AppBarTheme(
           elevation: 0,
           scrolledUnderElevation: 0,
-          surfaceTintColor: Colors.transparent,
+          surfaceTintColor: transparent,
           backgroundColor: backgroundWhite,
           centerTitle: true,
           titleTextStyle: appBarTitle,

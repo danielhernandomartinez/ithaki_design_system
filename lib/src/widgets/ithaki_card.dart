@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/ithaki_theme.dart';
+
 class IthakiCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? margin;
@@ -22,7 +24,7 @@ class IthakiCard extends StatelessWidget {
       margin: margin ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       padding: padding ?? const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: color ?? Colors.white,
+        color: color ?? IthakiTheme.backgroundWhite,
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: child,

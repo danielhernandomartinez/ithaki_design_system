@@ -50,7 +50,8 @@ class IthakiButton extends StatelessWidget {
       );
     }
 
-    final bgColor = isEnabled ? IthakiTheme.primaryPurple : IthakiTheme.primaryPurpleLight;
+    final bgColor =
+        isEnabled ? IthakiTheme.primaryPurple : IthakiTheme.primaryPurpleLight;
 
     return SizedBox(
       width: double.infinity,
@@ -61,8 +62,8 @@ class IthakiButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: bgColor,
             disabledBackgroundColor: IthakiTheme.primaryPurpleLight,
-            foregroundColor: Colors.white,
-            disabledForegroundColor: Colors.white,
+            foregroundColor: IthakiTheme.foregroundWhite,
+            disabledForegroundColor: IthakiTheme.foregroundWhite,
             shape: shape,
             elevation: 0,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

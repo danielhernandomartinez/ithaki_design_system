@@ -31,7 +31,7 @@ class SearchBottomSheet extends StatefulWidget {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Colors.white,
+      backgroundColor: IthakiTheme.backgroundWhite,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
@@ -122,18 +122,22 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                 decoration: InputDecoration(
                   hintText: widget.searchHint,
                   hintStyle: IthakiTheme.hintStyle,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(14),
-                    borderSide: const BorderSide(color: IthakiTheme.borderLight),
+                    borderSide:
+                        const BorderSide(color: IthakiTheme.borderLight),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(14),
-                    borderSide: const BorderSide(color: IthakiTheme.borderLight),
+                    borderSide:
+                        const BorderSide(color: IthakiTheme.borderLight),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(14),
-                    borderSide: const BorderSide(color: IthakiTheme.primaryPurple, width: 1.5),
+                    borderSide: const BorderSide(
+                        color: IthakiTheme.primaryPurple, width: 1.5),
                   ),
                 ),
               ),
@@ -148,7 +152,8 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                   final item = _filtered[index];
                   final isSelected = _selected?.id == item.id;
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(30),
                       onTap: () => setState(() => _selected = item),
@@ -157,24 +162,31 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                           color: isSelected ? IthakiTheme.cardBackground : null,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 10),
                         child: Row(
                           children: [
                             if (isSelected) ...[
-                              const IthakiIcon('check', size: 18, color: IthakiTheme.textPrimary),
+                              const IthakiIcon('check',
+                                  size: 18, color: IthakiTheme.textPrimary),
                               const SizedBox(width: 8),
-                              if (item.leadingWidget != null) item.leadingWidget!,
+                              if (item.leadingWidget != null)
+                                item.leadingWidget!,
                             ] else if (item.leadingWidget != null)
                               item.leadingWidget!
                             else
                               const SizedBox(width: 18),
                             const SizedBox(width: 12),
                             Expanded(
-                              child: Text(item.label, style: IthakiTheme.bodySmallMedium, overflow: TextOverflow.ellipsis),
+                              child: Text(item.label,
+                                  style: IthakiTheme.bodySmallMedium,
+                                  overflow: TextOverflow.ellipsis),
                             ),
                             if (item.subtitle.isNotEmpty) ...[
                               const SizedBox(width: 8),
-                              Text(item.subtitle, style: IthakiTheme.captionRegular, overflow: TextOverflow.ellipsis),
+                              Text(item.subtitle,
+                                  style: IthakiTheme.captionRegular,
+                                  overflow: TextOverflow.ellipsis),
                             ],
                           ],
                         ),
@@ -186,7 +198,13 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
             ),
             // Select button
             Padding(
-              padding: EdgeInsets.fromLTRB(16, 8, 16, MediaQuery.of(context).viewInsets.bottom + MediaQuery.of(context).padding.bottom + 16),
+              padding: EdgeInsets.fromLTRB(
+                  16,
+                  8,
+                  16,
+                  MediaQuery.of(context).viewInsets.bottom +
+                      MediaQuery.of(context).padding.bottom +
+                      16),
               child: IthakiButton(
                 widget.selectLabel,
                 isEnabled: _selected != null,

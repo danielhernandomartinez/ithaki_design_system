@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/ithaki_theme.dart';
+import 'ithaki_icon.dart';
 
 class IthakiOptionChip extends StatelessWidget {
   final String label;
@@ -24,7 +25,9 @@ class IthakiOptionChip extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isSelected ? IthakiTheme.primaryPurple : IthakiTheme.borderLight,
+            color: isSelected
+                ? IthakiTheme.primaryPurple
+                : IthakiTheme.borderLight,
             width: isSelected ? 2 : 1,
           ),
         ),
@@ -32,7 +35,8 @@ class IthakiOptionChip extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (isSelected) ...[
-              const Icon(Icons.check, size: 14, color: IthakiTheme.primaryPurple),
+              const IthakiIcon('check',
+                  size: 14, color: IthakiTheme.primaryPurple),
               const SizedBox(width: 4),
             ],
             Text(
@@ -40,7 +44,9 @@ class IthakiOptionChip extends StatelessWidget {
               style: IthakiTheme.bodySmall.copyWith(
                 fontSize: 13,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                color: isSelected ? IthakiTheme.primaryPurple : IthakiTheme.textPrimary,
+                color: isSelected
+                    ? IthakiTheme.primaryPurple
+                    : IthakiTheme.textPrimary,
               ),
             ),
           ],

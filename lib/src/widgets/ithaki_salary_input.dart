@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import '../theme/ithaki_theme.dart';
 import '../models/search_item.dart';
 import 'ithaki_checkbox.dart';
+import 'ithaki_icon.dart';
 import 'search_bottom_sheet.dart';
 
 class IthakiSalaryInput extends StatelessWidget {
@@ -84,19 +85,23 @@ class IthakiSalaryInput extends StatelessWidget {
                             controller: amountController,
                             enabled: !preferNotToSpecify,
                             keyboardType: TextInputType.number,
-                            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
                             style: IthakiTheme.bodySmall,
                             decoration: const InputDecoration(
                               hintText: '0',
                               hintStyle: IthakiTheme.hintStyle,
                               border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 14, vertical: 14),
                             ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: Text(currencySymbol, style: IthakiTheme.bodySecondary),
+                          child: Text(currencySymbol,
+                              style: IthakiTheme.bodySecondary),
                         ),
                       ],
                     ),
@@ -113,13 +118,18 @@ class IthakiSalaryInput extends StatelessWidget {
                   Text(paymentTermLabel, style: IthakiTheme.captionRegular),
                   const SizedBox(height: 4),
                   GestureDetector(
-                    onTap: preferNotToSpecify ? null : () => _openPaymentTermPicker(context),
+                    onTap: preferNotToSpecify
+                        ? null
+                        : () => _openPaymentTermPicker(context),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 14, vertical: 14),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
-                          color: paymentTerm != null ? IthakiTheme.primaryPurple : IthakiTheme.borderLight,
+                          color: paymentTerm != null
+                              ? IthakiTheme.primaryPurple
+                              : IthakiTheme.borderLight,
                           width: paymentTerm != null ? 1.5 : 1,
                         ),
                       ),
@@ -129,12 +139,15 @@ class IthakiSalaryInput extends StatelessWidget {
                             child: Text(
                               paymentTerm ?? paymentTermPlaceholder,
                               style: IthakiTheme.bodySmall.copyWith(
-                                color: paymentTerm != null ? IthakiTheme.textPrimary : IthakiTheme.softGraphite,
+                                color: paymentTerm != null
+                                    ? IthakiTheme.textPrimary
+                                    : IthakiTheme.softGraphite,
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          const Icon(Icons.keyboard_arrow_down, size: 18, color: IthakiTheme.textSecondary),
+                          const IthakiIcon('arrow-down',
+                              size: 18, color: IthakiTheme.textSecondary),
                         ],
                       ),
                     ),

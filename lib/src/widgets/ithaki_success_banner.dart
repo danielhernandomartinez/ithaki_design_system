@@ -1,6 +1,9 @@
 // lib/src/widgets/ithaki_success_banner.dart
 import 'package:flutter/material.dart';
 
+import '../theme/ithaki_theme.dart';
+import 'ithaki_icon.dart';
+
 /// Dark graphite toast banner shown below the AppBar.
 /// Slides down, stays 3 s, slides back up.
 ///
@@ -80,11 +83,11 @@ class _BannerWidgetState extends State<_BannerWidget>
       child: SlideTransition(
         position: _slide,
         child: Material(
-          color: Colors.transparent,
+          color: IthakiTheme.transparent,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             decoration: BoxDecoration(
-              color: const Color(0xFF3D3D3A),
+              color: IthakiTheme.successBannerBg,
               borderRadius: BorderRadius.circular(16),
             ),
             child: Row(
@@ -92,12 +95,14 @@ class _BannerWidgetState extends State<_BannerWidget>
                 Expanded(
                   child: Text(
                     widget.message,
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
+                    style: const TextStyle(
+                        color: IthakiTheme.foregroundWhite, fontSize: 14),
                   ),
                 ),
                 GestureDetector(
                   onTap: _dismiss,
-                  child: const Icon(Icons.close, color: Colors.white, size: 18),
+                  child: const IthakiIcon('x-close',
+                      color: IthakiTheme.foregroundWhite, size: 18),
                 ),
               ],
             ),

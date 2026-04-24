@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../theme/ithaki_theme.dart';
+import 'ithaki_icon.dart';
 
 class IthakiMetaCell extends StatelessWidget {
-  final IconData icon;
+  final String iconName;
   final String value;
   final bool alignIconTop;
   final bool flexible;
   final double fontSize;
 
   const IthakiMetaCell(
-    this.icon,
+    this.iconName,
     this.value, {
     super.key,
     this.alignIconTop = false,
@@ -20,7 +21,8 @@ class IthakiMetaCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconWidget = Icon(icon, size: 14, color: IthakiTheme.softGraphite);
+    final iconWidget =
+        IthakiIcon(iconName, size: 14, color: IthakiTheme.softGraphite);
     final textWidget = Text(
       value,
       style: IthakiTheme.bodySmall.copyWith(

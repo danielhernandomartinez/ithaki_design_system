@@ -65,18 +65,21 @@ class CatalogHome extends StatelessWidget {
       body: ListView.separated(
         padding: const EdgeInsets.all(16),
         itemCount: pages.length,
-        separatorBuilder: (_, __) => const SizedBox(height: 4),
+        separatorBuilder: (context, index) => const SizedBox(height: 4),
         itemBuilder: (context, index) {
           final entry = pages.entries.elementAt(index);
           return ListTile(
             title: Text(entry.key),
             trailing: const Icon(Icons.chevron_right),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
             tileColor: IthakiTheme.softGray,
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => _DetailPage(title: entry.key, child: entry.value),
+                builder: (_) =>
+                    _DetailPage(title: entry.key, child: entry.value),
               ),
             ),
           );
@@ -126,10 +129,7 @@ class _AppBarPage extends StatelessWidget {
         const _Label('With action (Sign Up)'),
         SizedBox(
           height: 56,
-          child: IthakiAppBar(
-            actionLabel: 'Sign Up',
-            onActionPressed: () {},
-          ),
+          child: IthakiAppBar(actionLabel: 'Sign Up', onActionPressed: () {}),
         ),
       ],
     );
@@ -149,7 +149,11 @@ class _ButtonPage extends StatelessWidget {
         const IthakiButton('Continue'),
         const SizedBox(height: 16),
         const _Label('Outline'),
-        IthakiButton('Skip', variant: IthakiButtonVariant.outline, onPressed: () {}),
+        IthakiButton(
+          'Skip',
+          variant: IthakiButtonVariant.outline,
+          onPressed: () {},
+        ),
       ],
     );
   }
@@ -164,10 +168,18 @@ class _TextFieldPage extends StatefulWidget {
 class _TextFieldPageState extends State<_TextFieldPage> {
   final _ctrl = TextEditingController();
   @override
-  void dispose() { _ctrl.dispose(); super.dispose(); }
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return IthakiTextField(label: 'Full Name', hint: 'John Doe', controller: _ctrl);
+    return IthakiTextField(
+      label: 'Full Name',
+      hint: 'John Doe',
+      controller: _ctrl,
+    );
   }
 }
 
@@ -180,10 +192,18 @@ class _PasswordFieldPage extends StatefulWidget {
 class _PasswordFieldPageState extends State<_PasswordFieldPage> {
   final _ctrl = TextEditingController();
   @override
-  void dispose() { _ctrl.dispose(); super.dispose(); }
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return IthakiPasswordField(label: 'Password', hint: 'Enter password', controller: _ctrl);
+    return IthakiPasswordField(
+      label: 'Password',
+      hint: 'Enter password',
+      controller: _ctrl,
+    );
   }
 }
 
@@ -197,7 +217,11 @@ class _PhoneFieldPageState extends State<_PhoneFieldPage> {
   final _ctrl = TextEditingController();
   bool _valid = false;
   @override
-  void dispose() { _ctrl.dispose(); super.dispose(); }
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -207,7 +231,10 @@ class _PhoneFieldPageState extends State<_PhoneFieldPage> {
           onValidationChanged: (v) => setState(() => _valid = v),
         ),
         const SizedBox(height: 12),
-        Text('Valid: $_valid', style: TextStyle(color: _valid ? Colors.green : Colors.red)),
+        Text(
+          'Valid: $_valid',
+          style: TextStyle(color: _valid ? Colors.green : Colors.red),
+        ),
       ],
     );
   }
@@ -227,9 +254,11 @@ class _DropdownPageState extends State<_DropdownPage> {
       label: 'Country',
       hint: 'Select country',
       value: _value,
-      items: ['Spain', 'Greece', 'Germany']
-          .map((c) => DropdownMenuItem(value: c, child: Text(c)))
-          .toList(),
+      items: [
+        'Spain',
+        'Greece',
+        'Germany',
+      ].map((c) => DropdownMenuItem(value: c, child: Text(c))).toList(),
       onChanged: (v) => setState(() => _value = v),
     );
   }
@@ -299,7 +328,14 @@ class _ChipGroupPageState extends State<_ChipGroupPage> {
       children: [
         const _Label('Multi-select (max 3)'),
         IthakiChipGroup(
-          options: const ['Flutter', 'React', 'Swift', 'Kotlin', 'Dart', 'TypeScript'],
+          options: const [
+            'Flutter',
+            'React',
+            'Swift',
+            'Kotlin',
+            'Dart',
+            'TypeScript',
+          ],
           selected: _selected,
           onChanged: (v) => setState(() => _selected = v),
           maxSelect: 3,
@@ -322,7 +358,13 @@ class _ChipSectionPageState extends State<_ChipSectionPage> {
     return IthakiChipSection(
       title: 'Skills',
       description: 'Select up to 5 skills that describe your expertise.',
-      options: const ['Design', 'Development', 'Marketing', 'Sales', 'Management'],
+      options: const [
+        'Design',
+        'Development',
+        'Marketing',
+        'Sales',
+        'Management',
+      ],
       selected: _selected,
       onChanged: (v) => setState(() => _selected = v),
       maxSelect: 5,
@@ -446,7 +488,8 @@ class _ResendTimerPage extends StatefulWidget {
   State<_ResendTimerPage> createState() => _ResendTimerPageState();
 }
 
-class _ResendTimerPageState extends State<_ResendTimerPage> with CountdownMixin {
+class _ResendTimerPageState extends State<_ResendTimerPage>
+    with CountdownMixin {
   @override
   void initState() {
     super.initState();
@@ -491,7 +534,10 @@ class _SalaryInputPageState extends State<_SalaryInputPage> {
   bool _preferNot = false;
 
   @override
-  void dispose() { _ctrl.dispose(); super.dispose(); }
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -516,9 +562,17 @@ class _JobCardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        IthakiJobCard(title: 'Senior Flutter Developer', subtitle: 'Google - Madrid', onDelete: () {}),
+        IthakiJobCard(
+          title: 'Senior Flutter Developer',
+          subtitle: 'Google - Madrid',
+          onDelete: () {},
+        ),
         const SizedBox(height: 12),
-        IthakiJobCard(title: 'Product Designer', subtitle: 'Figma - Remote', onDelete: () {}),
+        IthakiJobCard(
+          title: 'Product Designer',
+          subtitle: 'Figma - Remote',
+          onDelete: () {},
+        ),
       ],
     );
   }
@@ -528,7 +582,17 @@ class _IconPage extends StatelessWidget {
   const _IconPage();
   @override
   Widget build(BuildContext context) {
-    final icons = ['check', 'arrow-down', 'envelope', 'whatsapp', 'eye', 'eye-off', 'trash', 'menu', 'search'];
+    final icons = [
+      'check',
+      'arrow-down',
+      'envelope',
+      'whatsapp',
+      'eye',
+      'eye-off',
+      'trash',
+      'menu',
+      'search',
+    ];
     return Wrap(
       spacing: 16,
       runSpacing: 16,
@@ -550,7 +614,20 @@ class _FlagPage extends StatelessWidget {
   const _FlagPage();
   @override
   Widget build(BuildContext context) {
-    final codes = ['es', 'us', 'gb', 'gr', 'de', 'fr', 'it', 'pt', 'nl', 'jp', 'br', 'in'];
+    final codes = [
+      'es',
+      'us',
+      'gb',
+      'gr',
+      'de',
+      'fr',
+      'it',
+      'pt',
+      'nl',
+      'jp',
+      'br',
+      'in',
+    ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -644,15 +721,27 @@ class _InfoTagPage extends StatelessWidget {
           runSpacing: 12,
           children: [
             IthakiInfoTag(
-              icon: IthakiIcon('clock', size: 16, color: IthakiTheme.textSecondary),
+              icon: IthakiIcon(
+                'clock',
+                size: 16,
+                color: IthakiTheme.textSecondary,
+              ),
               label: '40h/week',
             ),
             IthakiInfoTag(
-              icon: IthakiIcon('pc', size: 16, color: IthakiTheme.textSecondary),
+              icon: IthakiIcon(
+                'pc',
+                size: 16,
+                color: IthakiTheme.textSecondary,
+              ),
               label: 'Remote',
             ),
             IthakiInfoTag(
-              icon: IthakiIcon('level', size: 16, color: IthakiTheme.textSecondary),
+              icon: IthakiIcon(
+                'level',
+                size: 16,
+                color: IthakiTheme.textSecondary,
+              ),
               label: 'Senior',
             ),
           ],
@@ -719,7 +808,11 @@ class _StatCardPage extends StatelessWidget {
           change: -1,
         ),
         IthakiStatRowData(
-          icon: IthakiIcon('envelope', size: 18, color: IthakiTheme.primaryPurple),
+          icon: IthakiIcon(
+            'envelope',
+            size: 18,
+            color: IthakiTheme.primaryPurple,
+          ),
           label: 'Responses',
           value: 4,
         ),
@@ -737,7 +830,8 @@ class _CourseCardPage extends StatelessWidget {
         const _Label('With all metadata'),
         IthakiCourseCard(
           title: 'Introduction to Flutter',
-          description: 'Learn how to build beautiful mobile apps with Flutter framework.',
+          description:
+              'Learn how to build beautiful mobile apps with Flutter framework.',
           tags: const ['Flutter', 'Mobile', 'Dart'],
           format: 'Online',
           duration: '6 weeks',
@@ -748,7 +842,8 @@ class _CourseCardPage extends StatelessWidget {
         const _Label('Minimal'),
         IthakiCourseCard(
           title: 'Advanced UI Patterns',
-          description: 'Deep dive into complex UI architectures and state management.',
+          description:
+              'Deep dive into complex UI architectures and state management.',
           onTap: () {},
         ),
       ],
@@ -789,7 +884,8 @@ class _GradientBannerPage extends StatelessWidget {
         const _Label('Default gradient'),
         IthakiGradientBanner(
           title: 'Ready to find your next role?',
-          subtitle: 'Let us help you discover opportunities tailored to your skills.',
+          subtitle:
+              'Let us help you discover opportunities tailored to your skills.',
           buttonLabel: 'Get Started',
           onButtonPressed: () {},
         ),
@@ -797,9 +893,14 @@ class _GradientBannerPage extends StatelessWidget {
         const _Label('Custom colors'),
         IthakiGradientBanner(
           title: 'Complete your profile',
-          subtitle: 'A complete profile increases your chances of getting hired.',
+          subtitle:
+              'A complete profile increases your chances of getting hired.',
           buttonLabel: 'Fill Profile',
-          gradientColors: const [Color(0xFF0D47A1), Color(0xFF1976D2), Color(0xFF42A5F5)],
+          gradientColors: const [
+            Color(0xFF0D47A1),
+            Color(0xFF1976D2),
+            Color(0xFF42A5F5),
+          ],
           onButtonPressed: () {},
         ),
       ],
@@ -833,10 +934,27 @@ class _NavDrawerPage extends StatelessWidget {
         items: const [
           IthakiNavItem(icon: 'home', label: 'Home', route: '/home'),
           IthakiNavItem(icon: 'search', label: 'Job Search', route: '/search'),
-          IthakiNavItem(icon: 'envelope', label: 'My Applications', route: '/applications', badge: 3),
-          IthakiNavItem(icon: 'chat', label: 'Career Assistant', route: '/assistant'),
-          IthakiNavItem(icon: 'check', label: 'My Assessments', route: '/assessments'),
-          IthakiNavItem(icon: 'learn', label: 'Learning Hub', route: '/learning'),
+          IthakiNavItem(
+            icon: 'envelope',
+            label: 'My Applications',
+            route: '/applications',
+            badge: 3,
+          ),
+          IthakiNavItem(
+            icon: 'chat',
+            label: 'Career Assistant',
+            route: '/assistant',
+          ),
+          IthakiNavItem(
+            icon: 'check',
+            label: 'My Assessments',
+            route: '/assessments',
+          ),
+          IthakiNavItem(
+            icon: 'learn',
+            label: 'Learning Hub',
+            route: '/learning',
+          ),
           IthakiNavItem(icon: 'news', label: 'Blog & News', route: '/news'),
         ],
         profileProgress: 0.45,
@@ -875,10 +993,7 @@ class _ProductTourBannerPage extends StatelessWidget {
   const _ProductTourBannerPage();
   @override
   Widget build(BuildContext context) {
-    return IthakiProductTourBanner(
-      onStart: () {},
-      onDismiss: () {},
-    );
+    return IthakiProductTourBanner(onStart: () {}, onDismiss: () {});
   }
 }
 
@@ -916,7 +1031,14 @@ class _Label extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
-      child: Text(text, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: IthakiTheme.textSecondary)),
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: IthakiTheme.textSecondary,
+        ),
+      ),
     );
   }
 }

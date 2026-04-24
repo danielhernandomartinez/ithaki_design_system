@@ -20,7 +20,7 @@ class IthakiJobCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
-        color: const Color(0xFFF0EAFA),
+        color: IthakiTheme.jobCardHighlight,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(color: IthakiTheme.primaryPurple, width: 1.5),
       ),
@@ -30,12 +30,13 @@ class IthakiJobCard extends StatelessWidget {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: IthakiTheme.backgroundWhite,
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: IthakiTheme.primaryPurple, width: 1),
             ),
             child: const Center(
-              child: IthakiIcon('rocket', size: 20, color: IthakiTheme.primaryPurple),
+              child: IthakiIcon('rocket',
+                  size: 20, color: IthakiTheme.primaryPurple),
             ),
           ),
           const SizedBox(width: 12),
@@ -55,12 +56,13 @@ class IthakiJobCard extends StatelessWidget {
               width: 36,
               height: 36,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: IthakiTheme.backgroundWhite,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: IthakiTheme.textPrimary, width: 1),
               ),
               child: const Center(
-                child: IthakiIcon('delete', size: 18, color: IthakiTheme.textSecondary),
+                child: IthakiIcon('delete',
+                    size: 18, color: IthakiTheme.textSecondary),
               ),
             ),
           ),

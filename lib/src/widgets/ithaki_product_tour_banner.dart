@@ -19,7 +19,7 @@ class IthakiProductTourBanner extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: IthakiTheme.backgroundWhite,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -27,7 +27,8 @@ class IthakiProductTourBanner extends StatelessWidget {
         children: [
           Row(
             children: [
-              const IthakiIcon('rocket', size: 20, color: IthakiTheme.primaryPurple),
+              const IthakiIcon('rocket',
+                  size: 20, color: IthakiTheme.primaryPurple),
               const SizedBox(width: 8),
               const Expanded(
                 child: Text(
@@ -41,7 +42,8 @@ class IthakiProductTourBanner extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: onDismiss,
-                child: const IthakiIcon('x-close', size: 18, color: IthakiTheme.softGraphite),
+                child: const IthakiIcon('x-close',
+                    size: 18, color: IthakiTheme.softGraphite),
               ),
             ],
           ),

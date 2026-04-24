@@ -41,8 +41,12 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
       child: Container(
-        color: Colors.transparent,
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 4, left: 16, right: 16, bottom: 4),
+        color: IthakiTheme.transparent,
+        padding: EdgeInsets.only(
+            top: MediaQuery.of(context).padding.top + 4,
+            left: 16,
+            right: 16,
+            bottom: 4),
         child: Container(
           height: 52,
           decoration: BoxDecoration(
@@ -50,7 +54,7 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.06),
+                color: IthakiTheme.appBarShadow,
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -98,8 +102,8 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
           height: 40,
           margin: const EdgeInsets.only(left: 4),
           child: const Center(
-            child: IthakiIcon('back-chevron', size: 22,
-                color: IthakiTheme.textPrimary),
+            child: IthakiIcon('back-chevron',
+                size: 22, color: IthakiTheme.textPrimary),
           ),
         ),
       );
@@ -120,16 +124,19 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 40,
                 decoration: menuOpen
                     ? BoxDecoration(
-                        color: const Color(0xFFF6F2FE),
+                        color: IthakiTheme.backgroundViolet,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: const Color(0xFF905CFF), width: 1.5),
+                        border: Border.all(
+                            color: IthakiTheme.primaryPurple, width: 1.5),
                       )
                     : null,
                 child: Center(
                   child: IthakiIcon(
                     'menu',
                     size: 22,
-                    color: menuOpen ? const Color(0xFF905CFF) : IthakiTheme.textPrimary,
+                    color: menuOpen
+                        ? IthakiTheme.primaryPurple
+                        : IthakiTheme.textPrimary,
                   ),
                 ),
               ),
@@ -156,7 +163,9 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               border: Border.all(
-                color: profileOpen ? const Color(0xFF905CFF) : Colors.transparent,
+                color: profileOpen
+                    ? IthakiTheme.primaryPurple
+                    : IthakiTheme.transparent,
                 width: 2,
               ),
             ),
@@ -166,7 +175,7 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: Text(
                 avatarInitials,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: IthakiTheme.foregroundWhite,
                   fontSize: 11,
                   fontWeight: FontWeight.bold,
                 ),

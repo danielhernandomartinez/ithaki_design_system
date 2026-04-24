@@ -48,7 +48,7 @@ class IthakiJobRecommendationCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: IthakiTheme.backgroundWhite,
           border: Border.all(color: IthakiTheme.borderLight),
           borderRadius: BorderRadius.circular(16),
         ),
@@ -70,7 +70,7 @@ class IthakiJobRecommendationCard extends StatelessWidget {
                       child: Text(
                         companyInitials,
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: IthakiTheme.backgroundWhite,
                           fontSize: 11,
                           fontWeight: FontWeight.bold,
                         ),
@@ -130,14 +130,16 @@ class IthakiJobRecommendationCard extends StatelessWidget {
                     children: [
                       if (location != null)
                         IthakiInfoTag(
-                          icon: IthakiIcon('location', size: tagIconSize, color: tagIconColor),
+                          icon: IthakiIcon('location',
+                              size: tagIconSize, color: tagIconColor),
                           label: location!,
                         ),
                       if (location != null && employmentType != null)
                         const SizedBox(height: 8),
                       if (employmentType != null)
                         IthakiInfoTag(
-                          icon: IthakiIcon('clock', size: tagIconSize, color: tagIconColor),
+                          icon: IthakiIcon('clock',
+                              size: tagIconSize, color: tagIconColor),
                           label: employmentType!,
                         ),
                     ],
@@ -149,14 +151,16 @@ class IthakiJobRecommendationCard extends StatelessWidget {
                     children: [
                       if (workMode != null)
                         IthakiInfoTag(
-                          icon: IthakiIcon('briefcase-work', size: tagIconSize, color: tagIconColor),
+                          icon: IthakiIcon('briefcase-work',
+                              size: tagIconSize, color: tagIconColor),
                           label: workMode!,
                         ),
                       if (workMode != null && level != null)
                         const SizedBox(height: 8),
                       if (level != null)
                         IthakiInfoTag(
-                          icon: IthakiIcon('level', size: tagIconSize, color: tagIconColor),
+                          icon: IthakiIcon('level',
+                              size: tagIconSize, color: tagIconColor),
                           label: level!,
                         ),
                     ],

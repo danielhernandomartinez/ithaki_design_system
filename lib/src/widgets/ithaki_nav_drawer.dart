@@ -120,7 +120,7 @@ class _NavTile extends StatelessWidget {
           duration: const Duration(milliseconds: 150),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           decoration: BoxDecoration(
-            color: selected ? const Color(0xFFCCFF00) : Colors.transparent,
+            color: selected ? IthakiTheme.navLime : IthakiTheme.transparent,
             borderRadius: BorderRadius.circular(50),
           ),
           child: Row(
@@ -128,7 +128,9 @@ class _NavTile extends StatelessWidget {
               IthakiIcon(
                 item.icon,
                 size: 20,
-                color: selected ? IthakiTheme.textPrimary : IthakiTheme.textPrimary,
+                color: selected
+                    ? IthakiTheme.textPrimary
+                    : IthakiTheme.textPrimary,
               ),
               const SizedBox(width: 14),
               Expanded(
@@ -143,7 +145,8 @@ class _NavTile extends StatelessWidget {
               ),
               if (item.badge != null)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
                   decoration: const BoxDecoration(
                     color: IthakiTheme.textPrimary,
                     shape: BoxShape.circle,
@@ -151,7 +154,7 @@ class _NavTile extends StatelessWidget {
                   child: Text(
                     '${item.badge}',
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: IthakiTheme.foregroundWhite,
                       fontSize: 11,
                       fontWeight: FontWeight.bold,
                     ),
@@ -178,7 +181,7 @@ class _ProfileCompletionCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: IthakiTheme.backgroundWhite,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -209,7 +212,7 @@ class _ProfileCompletionCard extends StatelessWidget {
                     widthFactor: progress,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: const Color(0xFFCCFF00),
+                        color: IthakiTheme.navLime,
                         borderRadius: BorderRadius.circular(50),
                       ),
                       alignment: Alignment.centerLeft,
@@ -237,16 +240,17 @@ class _ProfileCompletionCard extends StatelessWidget {
 class _HatchPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final bg = Paint()..color = const Color(0xFFE8E8E8);
+    final bg = Paint()..color = IthakiTheme.hatchBackgroundMuted;
     canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), bg);
 
     final paint = Paint()
-      ..color = const Color(0xFFD0D0D0)
+      ..color = IthakiTheme.borderLight
       ..strokeWidth = 1.5;
 
     const spacing = 8.0;
     for (double x = -size.height; x < size.width + size.height; x += spacing) {
-      canvas.drawLine(Offset(x, size.height), Offset(x + size.height, 0), paint);
+      canvas.drawLine(
+          Offset(x, size.height), Offset(x + size.height, 0), paint);
     }
   }
 
@@ -285,7 +289,8 @@ class _LanguageTile extends StatelessWidget {
               ),
             ),
           ),
-          const Icon(Icons.keyboard_arrow_down, size: 20, color: IthakiTheme.textSecondary),
+          const IthakiIcon('arrow-down',
+              size: 20, color: IthakiTheme.textSecondary),
         ],
       ),
     );

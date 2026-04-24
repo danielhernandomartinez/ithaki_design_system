@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/ithaki_theme.dart';
+import 'ithaki_icon.dart';
 
 class IthakiCheckbox extends StatelessWidget {
   final bool value;
@@ -25,15 +26,19 @@ class IthakiCheckbox extends StatelessWidget {
             height: 18,
             margin: const EdgeInsets.only(top: 2),
             decoration: BoxDecoration(
-              color: value ? IthakiTheme.primaryPurple : Colors.white,
+              color: value
+                  ? IthakiTheme.primaryPurple
+                  : IthakiTheme.backgroundWhite,
               borderRadius: BorderRadius.circular(4),
               border: Border.all(
-                color: value ? IthakiTheme.primaryPurple : IthakiTheme.borderLight,
+                color:
+                    value ? IthakiTheme.primaryPurple : IthakiTheme.borderLight,
                 width: 1.5,
               ),
             ),
             child: value
-                ? const Icon(Icons.check, size: 12, color: Colors.white)
+                ? const IthakiIcon('check',
+                    size: 12, color: IthakiTheme.foregroundWhite)
                 : null,
           ),
           const SizedBox(width: 10),

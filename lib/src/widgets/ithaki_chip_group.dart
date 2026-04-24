@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/ithaki_theme.dart';
+import 'ithaki_icon.dart';
 
 class IthakiChipGroup extends StatelessWidget {
   final List<String> options;
@@ -40,7 +41,9 @@ class IthakiChipGroup extends StatelessWidget {
             duration: const Duration(milliseconds: 200),
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: isSelected ? IthakiTheme.backgroundViolet : IthakiTheme.softGray,
+              color: isSelected
+                  ? IthakiTheme.backgroundViolet
+                  : IthakiTheme.softGray,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: isSelected
@@ -59,11 +62,14 @@ class IthakiChipGroup extends StatelessWidget {
                   child: AnimatedOpacity(
                     opacity: isSelected ? 1.0 : 0.0,
                     duration: const Duration(milliseconds: 200),
-                    child: const Icon(Icons.check, size: 13, color: IthakiTheme.primaryPurple),
+                    child: const IthakiIcon('check',
+                        size: 13, color: IthakiTheme.primaryPurple),
                   ),
                 ),
                 TweenAnimationBuilder<double>(
-                  tween: Tween(begin: isSelected ? 0.0 : 9.0, end: isSelected ? 9.0 : 0.0),
+                  tween: Tween(
+                      begin: isSelected ? 0.0 : 9.0,
+                      end: isSelected ? 9.0 : 0.0),
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.easeInOut,
                   builder: (_, offset, child) => Transform.translate(

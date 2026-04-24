@@ -15,14 +15,16 @@ class IthakiMatchBar extends StatelessWidget {
     super.key,
     required this.percentage,
     required this.label,
-    this.gradientColors = const [Color(0xFF50C948), IthakiTheme.matchGreen],
+    this.gradientColors = const [
+      IthakiTheme.matchGradientHighStart,
+      IthakiTheme.matchGreen
+    ],
     this.backgroundColor = IthakiTheme.matchBarBg,
     this.showPercentage = true,
   });
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       width: double.infinity,
       height: 36,
@@ -55,7 +57,7 @@ class IthakiMatchBar extends StatelessWidget {
                       width: 28,
                       height: 28,
                       decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: IthakiTheme.backgroundWhite,
                         shape: BoxShape.circle,
                       ),
                       alignment: Alignment.center,

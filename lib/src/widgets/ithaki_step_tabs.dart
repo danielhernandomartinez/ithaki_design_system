@@ -51,7 +51,7 @@ class IthakiStepTabs extends StatelessWidget {
     } else {
       borderColor = IthakiTheme.borderLight;
       textColor = IthakiTheme.textSecondary;
-      bgColor = Colors.white;
+      bgColor = IthakiTheme.backgroundWhite;
     }
 
     return Container(

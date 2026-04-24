@@ -33,7 +33,7 @@ class IthakiSettingsCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: IthakiTheme.backgroundWhite,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(children: children),
@@ -47,6 +47,7 @@ class IthakiSettingsDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Divider(height: 1, indent: 16, endIndent: 16, color: IthakiTheme.borderLight);
+    return const Divider(
+        height: 1, indent: 16, endIndent: 16, color: IthakiTheme.borderLight);
   }
 }

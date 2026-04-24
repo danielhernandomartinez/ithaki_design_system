@@ -1,13 +1,14 @@
 // lib/src/widgets/ithaki_bottom_sheet_base.dart
 import 'package:flutter/material.dart';
 import '../theme/ithaki_theme.dart';
+import 'ithaki_icon.dart';
 
 /// White modal bottom sheet scaffold with title and × close button.
 /// Usage:
 ///   showModalBottomSheet(
 ///     context: context,
 ///     isScrollControlled: true,
-///     backgroundColor: Colors.transparent,
+///     backgroundColor: IthakiTheme.transparent,
 ///     builder: (_) => BottomSheetBase(title: 'X', child: ...),
 ///   );
 class BottomSheetBase extends StatelessWidget {
@@ -36,7 +37,7 @@ class BottomSheetBase extends StatelessWidget {
         constraints: BoxConstraints(maxHeight: maxHeight),
         child: Container(
           decoration: const BoxDecoration(
-            color: Colors.white,
+            color: IthakiTheme.backgroundWhite,
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
@@ -56,7 +57,8 @@ class BottomSheetBase extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close, size: 22, color: IthakiTheme.textPrimary),
+                    icon: const IthakiIcon('x-close',
+                        size: 22, color: IthakiTheme.textPrimary),
                     onPressed: onClose ?? () => Navigator.of(context).pop(),
                     padding: EdgeInsets.zero,
                     constraints: const BoxConstraints(),
@@ -68,7 +70,11 @@ class BottomSheetBase extends StatelessWidget {
               // SafeArea uses MediaQuery.padding.bottom which Flutter calculates
               // automatically: gesture-bar height when keyboard is hidden, 0 when
               // the keyboard is covering it. No conditionals, no animation needed.
-              const SafeArea(top: false, left: false, right: false, child: SizedBox.shrink()),
+              const SafeArea(
+                  top: false,
+                  left: false,
+                  right: false,
+                  child: SizedBox.shrink()),
             ],
           ),
         ),

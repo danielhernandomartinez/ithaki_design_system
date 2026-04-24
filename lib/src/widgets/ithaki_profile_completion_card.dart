@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import '../theme/ithaki_theme.dart';
 import 'ithaki_hatch_progress_bar.dart';
 import 'ithaki_button.dart';
+import 'ithaki_icon.dart';
 
 class IthakiProfileChecklistItem {
   final String label;
   final bool completed;
-  const IthakiProfileChecklistItem({required this.label, required this.completed});
+  const IthakiProfileChecklistItem(
+      {required this.label, required this.completed});
 }
 
-/// Two-section card: white checklist on top, #daccf8 welcome section below.
+/// Two-section card: checklist on top, welcome section below.
 class IthakiProfileCompletionCard extends StatelessWidget {
   final List<IthakiProfileChecklistItem> items;
   final List<String> benefits;
@@ -30,7 +32,7 @@ class IthakiProfileCompletionCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: ColoredBox(
-        color: const Color(0xFFDACCF8),
+        color: IthakiTheme.profileCompletionBg,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -40,7 +42,7 @@ class IthakiProfileCompletionCard extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: IthakiTheme.backgroundWhite,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding: const EdgeInsets.all(16),
@@ -49,37 +51,49 @@ class IthakiProfileCompletionCard extends StatelessWidget {
                   children: [
                     const Text(
                       'Complete your profile',
-                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: IthakiTheme.textPrimary),
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: IthakiTheme.textPrimary),
                     ),
                     const SizedBox(height: 10),
                     IthakiHatchProgressBar(progress: progress),
                     const SizedBox(height: 12),
                     ...items.map((item) => Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 22, height: 22,
-                            decoration: BoxDecoration(
-                              color: item.completed ? IthakiTheme.textPrimary : IthakiTheme.softGray,
-                              shape: BoxShape.circle,
-                            ),
-                            child: item.completed
-                                ? const Icon(Icons.check, size: 14, color: Colors.white)
-                                : null,
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 22,
+                                height: 22,
+                                decoration: BoxDecoration(
+                                  color: item.completed
+                                      ? IthakiTheme.textPrimary
+                                      : IthakiTheme.softGray,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: item.completed
+                                    ? const IthakiIcon('check',
+                                        size: 14,
+                                        color: IthakiTheme.foregroundWhite)
+                                    : null,
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                item.label,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: item.completed
+                                      ? IthakiTheme.textPrimary
+                                      : IthakiTheme.textSecondary,
+                                  fontWeight: item.completed
+                                      ? FontWeight.w500
+                                      : FontWeight.w400,
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 10),
-                          Text(
-                            item.label,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: item.completed ? IthakiTheme.textPrimary : IthakiTheme.textSecondary,
-                              fontWeight: item.completed ? FontWeight.w500 : FontWeight.w400,
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
+                        )),
                   ],
                 ),
               ),
@@ -93,30 +107,45 @@ class IthakiProfileCompletionCard extends StatelessWidget {
                 children: [
                   const Text(
                     'Welcome to Ithaki!',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: IthakiTheme.textPrimary),
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: IthakiTheme.textPrimary),
                   ),
                   const SizedBox(height: 8),
                   const Text(
                     "Fill in the missing information to unlock your full experience on the platform. A complete profile helps you get better job matches and more employer invitations.",
-                    style: TextStyle(fontSize: 13, color: IthakiTheme.textSecondary, height: 1.5),
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: IthakiTheme.textSecondary,
+                        height: 1.5),
                   ),
                   const SizedBox(height: 14),
                   const Text(
                     'Benefits of completing your profile',
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: IthakiTheme.textPrimary),
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: IthakiTheme.textPrimary),
                   ),
                   const SizedBox(height: 8),
                   ...benefits.map((b) => Padding(
-                    padding: const EdgeInsets.only(bottom: 6),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Icon(Icons.check, size: 16, color: IthakiTheme.primaryPurple),
-                        const SizedBox(width: 8),
-                        Expanded(child: Text(b, style: const TextStyle(fontSize: 13, color: IthakiTheme.textSecondary, height: 1.4))),
-                      ],
-                    ),
-                  )),
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const IthakiIcon('check',
+                                size: 16, color: IthakiTheme.primaryPurple),
+                            const SizedBox(width: 8),
+                            Expanded(
+                                child: Text(b,
+                                    style: const TextStyle(
+                                        fontSize: 13,
+                                        color: IthakiTheme.textSecondary,
+                                        height: 1.4))),
+                          ],
+                        ),
+                      )),
                   const SizedBox(height: 14),
                   IthakiButton('Fill Profile', onPressed: onFillProfile),
                 ],

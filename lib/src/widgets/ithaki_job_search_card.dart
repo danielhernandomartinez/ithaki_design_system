@@ -57,7 +57,7 @@ class IthakiJobSearchCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: IthakiTheme.backgroundWhite,
         border: Border.all(color: IthakiTheme.borderLight),
         borderRadius: BorderRadius.circular(30),
       ),
@@ -140,7 +140,10 @@ class IthakiJobSearchCard extends StatelessWidget {
             percentage: matchPercentage,
             label: matchLabel,
             gradientColors: matchGradientColors ??
-                const [Color(0xFF50C948), IthakiTheme.matchGreen],
+                const [
+                  IthakiTheme.matchGradientHighStart,
+                  IthakiTheme.matchGreen
+                ],
             backgroundColor: matchBackgroundColor ?? IthakiTheme.matchBarBg,
             showPercentage: matchPercentage > 0,
           ),
@@ -279,7 +282,7 @@ class IthakiJobSearchCard extends StatelessWidget {
                         onPressed: onView,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: IthakiTheme.primaryPurple,
-                          foregroundColor: Colors.white,
+                          foregroundColor: IthakiTheme.foregroundWhite,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
