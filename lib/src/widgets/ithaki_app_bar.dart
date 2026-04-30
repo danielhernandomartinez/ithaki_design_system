@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../theme/ithaki_theme.dart';
@@ -11,7 +13,9 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool profileOpen;
   final String title;
   final String avatarInitials;
+  final String? avatarUrl;
   final VoidCallback? onMenuPressed;
+  final VoidCallback? onNotificationsPressed;
   final VoidCallback? onAvatarPressed;
   final GlobalKey? menuKey;
   final GlobalKey? avatarKey;
@@ -26,7 +30,9 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.profileOpen = false,
     this.title = 'Ithaki',
     this.avatarInitials = 'AA',
+    this.avatarUrl,
     this.onMenuPressed,
+    this.onNotificationsPressed,
     this.onAvatarPressed,
     this.menuKey,
     this.avatarKey,
@@ -148,12 +154,30 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
     return null;
   }
 
+  ImageProvider? _avatarImage() {
+    final value = avatarUrl?.trim();
+    if (value == null || value.isEmpty) return null;
+
+    final uri = Uri.tryParse(value);
+    if (uri != null && (uri.isScheme('http') || uri.isScheme('https'))) {
+      return NetworkImage(value);
+    }
+
+    final file = uri != null && uri.isScheme('file')
+        ? File(uri.toFilePath())
+        : File(value);
+    if (!file.existsSync()) return null;
+    return FileImage(file);
+  }
+
   List<Widget> _buildActions() {
     if (showMenuAndAvatar) {
+      final avatarImage = _avatarImage();
+
       return [
         IconButton(
           icon: const IthakiIcon('notifications-bell', size: 22),
-          onPressed: () {},
+          onPressed: onNotificationsPressed,
         ),
         GestureDetector(
           key: avatarKey,
@@ -172,14 +196,17 @@ class IthakiAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: CircleAvatar(
               radius: 16,
               backgroundColor: IthakiTheme.successGreen,
-              child: Text(
-                avatarInitials,
-                style: const TextStyle(
-                  color: IthakiTheme.foregroundWhite,
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              backgroundImage: avatarImage,
+              child: avatarImage == null
+                  ? Text(
+                      avatarInitials,
+                      style: const TextStyle(
+                        color: IthakiTheme.foregroundWhite,
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  : null,
             ),
           ),
         ),
