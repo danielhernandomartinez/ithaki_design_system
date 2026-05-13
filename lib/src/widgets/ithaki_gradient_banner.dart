@@ -89,11 +89,14 @@ class IthakiGradientBanner extends StatelessWidget {
                       buttonIcon!,
                       const SizedBox(width: 8),
                     ],
-                    Text(
-                      buttonLabel,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                    Flexible(
+                      child: Text(
+                        buttonLabel,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],
