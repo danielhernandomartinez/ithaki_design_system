@@ -48,7 +48,57 @@ class IthakiTheme {
   static const hatchStripe = Color(0xFFCCCCCC);
   static const profileCompletionBg = Color(0xFFDACCF8);
   static const jobCardHighlight = Color(0xFFF0EAFA);
+  static const jobCardHighlightSoft = Color(0xFFF0EAFF);
   static const successBannerBg = Color(0xFF3D3D3A);
+
+  // Neutral dividers / borders / surfaces
+  static const dividerSoft = Color(0xFFF0F0F0);
+  static const borderSubtle = Color(0xFFEEEEEE);
+  static const surfaceSubtle = Color(0xFFF8F8F8);
+  static const surfaceFaint = Color(0xFFF8F8FA);
+  static const surfaceMistGray = Color(0xFFF5F5F8);
+  static const surfaceLavender = Color(0xFFEDE7F6);
+
+  // Purple accents
+  static const surfacePurpleSelected = Color(0xFFDDD5F8);
+  static const sliderInactivePurple = Color(0xFFE0D5F8);
+
+  // Application/job status badge backgrounds
+  static const statusBgPurple = Color(0xFFE9DEFF);
+  static const statusBgGray = Color(0xFFE9E9E9);
+  static const statusBgBlue = Color(0xFFD8E5F9);
+  static const statusBgGreen = Color(0xFFD6F5D0);
+  static const statusBgRed = Color(0xFFFFE0E0);
+
+  // Odyssea review banner (lime tone)
+  static const reviewBannerBg = Color(0xFFF0F5C0);
+  static const reviewBannerText = Color(0xFF6B6B00);
+
+  // Star rating
+  static const starFilled = Color(0xFFFFB800);
+
+  // Match-score progress accents (banner)
+  static const matchScoreGood = Color(0xFFFFC44D);
+  static const matchScoreWeak = Color(0xFFFF8A4C);
+  static const matchScoreLow = Color(0xFFFF6B6B);
+
+  // Dark gradient stops
+  static const gradientDarkTop = Color(0xFF151515);
+  static const gradientDarkBottom = Color(0xFF1D1B28);
+  static const gradientCvDark = Color(0xFF232124);
+
+  // Tour overlay
+  static const tourSurfaceDark = Color(0xFF2E2E2E);
+  static const tourTextMuted = Color(0xFF9E9E9E);
+
+  // Error / soft error backgrounds
+  static const errorPinkBg = Color(0xFFFFEEEE);
+
+  // Diagnostics screen accents
+  static const diagnosticsBg = Color(0xFFF3F0FA);
+  static const diagnosticsAccent = Color(0xFF6B4EFF);
+  static const diagnosticsSuccess = Color(0xFF22C55E);
+  static const diagnosticsError = Color(0xFFEF4444);
 
   // 24px — main titles
   static const headingLarge = TextStyle(
