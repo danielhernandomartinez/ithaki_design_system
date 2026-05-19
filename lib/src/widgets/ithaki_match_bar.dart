@@ -27,9 +27,9 @@ class IthakiMatchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 36,
+      height: 40,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(26),
         color: backgroundColor,
       ),
       clipBehavior: Clip.antiAlias,
@@ -49,13 +49,13 @@ class IthakiMatchBar extends StatelessWidget {
           ),
           Positioned.fill(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 4),
               child: Row(
                 children: [
                   if (showPercentage) ...[
                     Container(
-                      width: 28,
-                      height: 28,
+                      width: 32,
+                      height: 32,
                       decoration: const BoxDecoration(
                         color: IthakiTheme.backgroundWhite,
                         shape: BoxShape.circle,
@@ -76,9 +76,10 @@ class IthakiMatchBar extends StatelessWidget {
                     child: Text(
                       label,
                       style: const TextStyle(
-                        fontSize: 13,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: IthakiTheme.textPrimary,
+                        height: 1.0,
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),

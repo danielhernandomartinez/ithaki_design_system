@@ -46,6 +46,7 @@ class IthakiTheme {
   static const hatchBackground = Color(0xFFE0E0E0);
   static const hatchBackgroundMuted = Color(0xFFE8E8E8);
   static const hatchStripe = Color(0xFFCCCCCC);
+  static const profileCompletionHatchStripe = Color(0xFFDEE0DB);
   static const profileCompletionBg = Color(0xFFDACCF8);
   static const jobCardHighlight = Color(0xFFF0EAFA);
   static const jobCardHighlightSoft = Color(0xFFF0EAFF);

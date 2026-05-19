@@ -50,7 +50,7 @@ class IthakiJobRecommendationCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: IthakiTheme.backgroundWhite,
           border: Border.all(color: IthakiTheme.borderLight),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,18 +60,18 @@ class IthakiJobRecommendationCard extends StatelessWidget {
               children: [
                 companyLogo ??
                     Container(
-                      width: 40,
-                      height: 40,
+                      width: 48,
+                      height: 48,
                       decoration: BoxDecoration(
                         color: companyColor,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                       alignment: Alignment.center,
                       child: Text(
                         companyInitials,
                         style: const TextStyle(
                           color: IthakiTheme.backgroundWhite,
-                          fontSize: 11,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -81,7 +81,7 @@ class IthakiJobRecommendationCard extends StatelessWidget {
                   child: Text(
                     companyName,
                     style: const TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: IthakiTheme.textSecondary,
                     ),
                   ),
