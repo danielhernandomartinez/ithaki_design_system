@@ -41,7 +41,7 @@ class IthakiJobSearchCard extends StatelessWidget {
     this.workMode,
     this.employmentType,
     this.level,
-    this.postedAgo = 'Posted 1 day ago',
+    this.postedAgo = '',
     this.companyLogo,
     this.isSaved = false,
     this.onSave,
@@ -102,7 +102,7 @@ class IthakiJobSearchCard extends StatelessWidget {
                     Text(
                       jobTitle,
                       style: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.w600,
                         color: IthakiTheme.textPrimary,
                       ),
